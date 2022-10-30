@@ -1,0 +1,172 @@
+Fastolph Bolger, race: Hobbit
+Durin VII, race: Dwarf
+Holfast Gardner, race: Hobbit
+Isengrim Took II, race: Hobbit
+Blanco Bracegirdle, race: Hobbit
+Caranthir, race: Elf
+Hador, race: Human
+Saradas Brandybuck, race: Hobbit
+Rufus Burrows, race: Hobbit
+Magor, race: Human
+Bergil, race: Human
+Halbarad, race: Human
+Merimas Brandybuck, race: Hobbit
+Rosa (Baggins) Took, race: Hobbit
+Cemendur (son of Axantur), race: Human
+Belegorn, race: Human
+Inigo Baggins, race: Hobbit
+Hallacar, race: Human
+Duinhir, race: Human
+Arahael, race: Human
+Aldamir, race: Human
+Estella (Bolger) Brandybuck, race: Hobbit
+Sancho Proudfoot, race: Hobbit
+Esmeralda Brandybuck, race: Hobbit
+Eärnil II, race: Human
+Caliondo, race: Human
+Valandur, race: Human
+Berylla (Boffin) Baggins, race: Hobbit
+Elboron, race: Human
+Aranwë, race: Elf
+Eärwen, race: Elf
+Grimbeorn, race: Human
+Dior (Steward), race: Human
+Atanatar I, race: Human
+Wulf I, race: Human
+Sadoc Brandybuck, race: Hobbit
+Marhwini, race: Human
+Lorgan, race: Human
+Carl Cotton, race: Hobbit
+Thráin II, race: Dwarf
+Ostoher, race: Human
+Bob, race: Hobbit
+Folcwine, race: Human
+Merimac Brandybuck, race: Hobbit
+Axantur, race: Human
+Arathorn II, race: Human
+Master of Laketown, race: Human
+Éomund, race: Human
+Narmacil II, race: Human
+Tolman Cotton, race: Hobbit
+Gildor Inglorion, race: Elf
+Drogo Baggins, race: Hobbit
+Lotho Sackville-Baggins, race: Hobbit
+Legolas (elf of Gondolin), race: Elf
+Mithrellas, race: Elf
+Willie Banks, race: Hobbit
+Ted Sandyman, race: Hobbit
+Ponto Baggins, race: Hobbit
+Erestor, race: Elf
+Ulbar, race: Human
+Dorlas, race: Human
+Dodinas Brandybuck, race: Hobbit
+Anborn, race: Human
+Inzilbêth, race: Human
+Tobold Hornblower, race: Hobbit
+Lavender (Grubb) Boffin, race: Hobbit
+Indor, race: Human
+Holman Greenhand, race: Hobbit
+Isilmo, race: Human
+Pelendur, race: Human
+Angelimir, race: Human
+Amrod, race: Elf
+Finduilas of Dol Amroth, race: Human
+Farin, race: Dwarf
+Fréawine, race: Human
+Húrin I, race: Human
+Bungo Baggins, race: Hobbit
+Amandil, race: Human
+Borlach, race: Human
+Túrin I, race: Human
+Harry Goatleaf, race: Human
+Enel, race: Elf
+Minardil, race: Human
+Baran, race: Human
+Náin (father of Dáin II Ironfoot), race: Dwarf
+Lindir, race: Elf
+Bard II, race: Human
+Arien, race: Maiar
+Amlaith, race: Human
+Mrs. Proudfoot, race: Hobbit
+Aragost, race: Human
+Saruman, race: Maiar
+Elatan, race: Human
+Mimosa (Bunce) Baggins, race: Hobbit
+Largo Baggins, race: Hobbit
+Elendur, race: Human
+Fengel, race: Human
+Tar-Anárion, race: Human
+Sigismond Took, race: Hobbit
+Ciryon, race: Human
+Araval, race: Human
+Tar-Meneldur, race: Human
+Baranor (Gondor), race: Human
+Númendil, race: Human
+Anairë, race: Elf
+Golasgil, race: Human
+Lindórië, race: Human
+Telchar, race: Dwarf
+Wiseman Gamwich, race: Hobbit
+Éofor, race: Human
+Celandine Brandybuck, race: Hobbit
+Glóin, race: Dwarf
+Forlong, race: Human
+Siriondil, race: Human
+Beregond (Captain), race: Human
+Curufin, race: Elf
+Gimilzagar, race: Human
+Finwë, race: Elf
+Berelach, race: Human
+Tata, race: Elf
+Gríma Wormtongue, race: Human
+Beorn, race: Human
+Ragnor, race: Human
+Girion, race: Human
+Tar-Míriel, race: Human
+Cirion, race: Human
+Celepharn, race: Human
+Théoden, race: Human
+Aldor, race: Human
+Beren (Belemir's son), race: Human
+Galadriel, race: Elf
+Hob Gammidge, race: Hobbit
+Gerda (Boffin) Bolger, race: Hobbit
+Tar-Ancalimon, race: Human
+Ulfast, race: Human
+Gruffo Boffin, race: Hobbit
+Angelica Baggins, race: Hobbit
+Ibûn, race: Dwarf
+Mairen, race: Human
+Bifur, race: Dwarf
+Ulwarth, race: Human
+Primrose Gardner, race: Hobbit
+Marroc Brandybuck, race: Hobbit
+Everard Took, race: Hobbit
+Marcho, race: Hobbit
+Marmadas Brandybuck, race: Hobbit
+Fastred, race: Human
+Ingold, race: Human
+Elemmakil, race: Elf
+Rúmil of Lórien, race: Elf
+Chica (Chubb) Baggins, race: Hobbit
+Eärendur of Arnor, race: Human
+Arathorn I, race: Human
+Gorbadoc Brandybuck, race: Hobbit
+Théodred, race: Human
+Beldis, race: Human
+Silmariën, race: Human
+Húrin of Emyn Arnen, race: Human
+Diamond Took, race: Hobbit
+Barahir, race: Human
+Orophin, race: Elf
+Belemir, race: Human
+Bombur, race: Dwarf
+Imin, race: Elf
+Hareth, race: Human
+Galion, race: Elf
+Telumehtar, race: Human
+Guthláf, race: Human
+Óin, race: Dwarf
+Turgon, race: Elf
+Borin, race: Dwarf
+Daisy Gamgee, race: Hobbit
