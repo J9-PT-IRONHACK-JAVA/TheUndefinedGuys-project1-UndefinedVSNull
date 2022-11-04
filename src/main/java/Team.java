@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Team {
 
     String charType;
-    ArrayList<> teamCharacters;
+    ArrayList<String> teamCharacters;
 
     //Constructor
     public Team(ArrayList teamCharacters) {
@@ -22,11 +22,11 @@ public class Team {
 
         if(charStats[1].equals("Warrior")){
             Warrior wa = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(wa);
+            this.teamCharacters.add(wa.toString());
         }
         else if(charStats[1].equals("Wizard")){
             Wizard wi = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(wi);
+            this.teamCharacters.add(wi.toString());
         }
     }
 
@@ -35,11 +35,11 @@ public class Team {
 
         if(charType.equals("Warrior")){
             Warrior wa = new Warrior();
-            this.teamCharacters.add(wa);
+            this.teamCharacters.add(wa.toString());
         }
         else if(charType.equals("Wizard")){
             Wizard wi = new Wizard();
-            this.teamCharacters.add(wi);
+            this.teamCharacters.add(wi.toString());
         }
     }
 }
