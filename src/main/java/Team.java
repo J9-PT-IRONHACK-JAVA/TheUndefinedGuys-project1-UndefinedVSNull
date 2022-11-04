@@ -1,11 +1,11 @@
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Team {
 
-    private ArrayList<> teamCharacters;
-
     String charType;
-
+    ArrayList<> teamCharacters;
 
     //Constructor
     public Team(ArrayList teamCharacters) {
@@ -31,7 +31,7 @@ public class Team {
     }
 
     //Add Characters - Random Mode
-    private void addCharactersRandom(String charType){
+    private void addCharactersRandom(String charType) throws FileNotFoundException {
 
         if(charType.equals("Warrior")){
             Warrior wa = new Warrior();
