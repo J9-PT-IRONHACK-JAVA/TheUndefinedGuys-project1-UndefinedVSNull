@@ -1,29 +1,27 @@
 import java.util.Scanner;
 
 public class Lobby {
-    private Team teamOne;
-    private Team teamTwo;
-
+    private final Team teamOne = new Team();
+    private final Team teamTwo = new Team();
     Lobby() {}
 
     public void teamCapacity(int creationMode, Scanner input) throws InterruptedException {
-        int size;
+        String size;
         System.out.println("How many characters would you like on your team?");
-        size = input.nextInt();
+        size = input.nextLine();
         switch (creationMode) {
             case 1:
-                creatingCustomized(size, input);
+                creatingCustomized(teamOne, Integer.parseInt(size), input);
+                creatingCustomized(teamTwo, Integer.parseInt(size), input);
             case 2:
                 creatingRandom();
             case 3:
                 creatingFomCSV();
         }
     }
-    public void creatingCustomized(int size, Scanner input) throws InterruptedException {
+    public void creatingCustomized(Team team, int size, Scanner input) throws InterruptedException {
         //String type, name, hp, energy, power;
         String[] charStats = new String[5];
-        Team tm = new Team();
-        boolean comparision;
         for (int i = 0; i < size; i++) {
             charStats[0] = assignTypeOfCharacter(input);
             System.out.println("Enter the name:");
@@ -31,7 +29,7 @@ public class Lobby {
             charStats[2] = AssignValueAndShowDialogueWithIntegers("Enter the health", input);
             charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy", input);
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power", input);
-            tm.addCharactersCustom(charStats);
+            team.addCharactersCustom(charStats);
         }
     }
     private String assignTypeOfCharacter(Scanner input) throws InterruptedException {
@@ -84,12 +82,14 @@ public class Lobby {
         }
         return isNum;
     }
+
     public void creatingRandom() {
         //TODO
     }
     public void creatingFomCSV() {
         //TODO
     }
+
     @Override
     public String toString() {
         return null;

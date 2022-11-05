@@ -1,10 +1,34 @@
 import java.util.Scanner;
 
 public class Menu {
-    Lobby lobby;
+    Lobby lobby = new Lobby();
 
-    public void main() {
-        String title = """
+    public void main() throws InterruptedException {
+        Scanner input = new Scanner(System.in);
+        System.out.println(printTitle());
+        System.out.println(menuMessage());
+        String gameModeInput = input.nextLine();
+        gameMode(Integer.parseInt(gameModeInput));
+        System.out.println(teamCreationModeMessage());
+        String creationModeInput = input.nextLine();
+        lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
+        input.close();
+    }
+
+    private void  gameMode(int n) {
+        // Que pasa si es de algun tipo de modo de juego?
+        switch (n) {
+            case 1:
+                System.out.println("PLAYER VS IA");
+            case 2:
+                System.out.println("PLAYER VS PLAYER");
+            case 3:
+                System.out.println("IA VS IA");
+        }
+
+    }
+    private String printTitle() {
+        return """
                   ________            __  __          __     _____                __   ______               ______                  \s
                  /_  __/ /_  ___     / / / /___  ____/ /__  / __(_)___  ___  ____/ /  / ____/_  ____  __   / ____/___ _____ ___  ___\s
                   / / / __ \\/ _ \\   / / / / __ \\/ __  / _ \\/ /_/ / __ \\/ _ \\/ __  /  / / __/ / / / / / /  / / __/ __ `/ __ `__ \\/ _ \\
@@ -12,19 +36,18 @@ public class Menu {
                 /_/ /_/ /_/\\___/   \\____/_/ /_/\\__,_/\\___/_/ /_/_/ /_/\\___/\\__,_/   \\____/\\__,_/\\__, /   \\____/\\__,_/_/ /_/ /_/\\___/\s
                                                                                                /____/                               \s
                 """;
-        Scanner input = new Scanner(System.in);
-        String menuMessage = """
+    }
+    private String menuMessage() {
+        return """
                 ----------------
                 How would you like to play?
                 [1] - Player vs IA
                 [2] - Player vs Player
                 [3] - IA vs IA
                 """;
-
-                //--------------formatted-------------();
-        // Segun lo que ponga --> 1
-
-        String teamCreationMode = """
+    }
+    private String teamCreationModeMessage() {
+        return """
                 ----------------
                 How would you like to create your team?
                 [1] - Full customized
@@ -32,7 +55,6 @@ public class Menu {
                 [3] - Import from CSV
                 """;
     }
-
     public static void makeItSlow(String arcade) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             Thread.sleep(250);
