@@ -3,8 +3,7 @@ import java.util.Scanner;
 public class Menu {
     Lobby lobby;
 
-    public void main() throws InterruptedException {
-        Scanner input = new Scanner(System.in);
+    public void main() {
         String title = """
                   ________            __  __          __     _____                __   ______               ______                  \s
                  /_  __/ /_  ___     / / / /___  ____/ /__  / __(_)___  ___  ____/ /  / ____/_  ____  __   / ____/___ _____ ___  ___\s
@@ -13,6 +12,7 @@ public class Menu {
                 /_/ /_/ /_/\\___/   \\____/_/ /_/\\__,_/\\___/_/ /_/_/ /_/\\___/\\__,_/   \\____/\\__,_/\\__, /   \\____/\\__,_/_/ /_/ /_/\\___/\s
                                                                                                /____/                               \s
                 """;
+        Scanner input = new Scanner(System.in);
         String menuMessage = """
                 ----------------
                 How would you like to play?
@@ -20,7 +20,7 @@ public class Menu {
                 [2] - Player vs Player
                 [3] - IA vs IA
                 """;
-                //TODO
+
                 //--------------formatted-------------();
         // Segun lo que ponga --> 1
 
@@ -31,9 +31,13 @@ public class Menu {
                 [2] - Full random
                 [3] - Import from CSV
                 """;
-        Lobby clara = new Lobby();
-        clara.creatingCostumized(2, input);
-        
+    }
+
+    public static void makeItSlow(String arcade) throws InterruptedException {
+        for (int i = 0; i < arcade.length(); i++) {
+            Thread.sleep(250);
+            System.out.print(arcade.charAt(i));
+        }
     }
 
 }
