@@ -5,19 +5,25 @@ public class Lobby {
     private final Team teamTwo = new Team();
     Lobby() {}
 
-    public void teamCapacity(int creationMode, Scanner input) throws InterruptedException {
-        String size;
-        System.out.println("How many characters would you like on your team?");
-        size = input.nextLine();
+    public void createLobby(int creationMode, Scanner input) throws InterruptedException{
+        int capacity = teamCapacity(input);
         switch (creationMode) {
             case 1:
-                creatingCustomized(teamOne, Integer.parseInt(size), input);
-                creatingCustomized(teamTwo, Integer.parseInt(size), input);
+                //presentationMessage(teamOne);
+                creatingCustomized(teamOne, capacity, input);
+                //presentationMessage(teamtwo);
+                creatingCustomized(teamTwo, capacity, input);
             case 2:
                 creatingRandom();
             case 3:
                 creatingFomCSV();
         }
+    }
+    public int teamCapacity(Scanner input) {
+        String size;
+        System.out.println("How many characters would you like on your team?");
+        size = input.nextLine();
+        return (Integer.parseInt(size));
     }
     public void creatingCustomized(Team team, int size, Scanner input) throws InterruptedException {
         //String type, name, hp, energy, power;
@@ -31,6 +37,7 @@ public class Lobby {
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power", input);
             team.addCharactersCustom(charStats);
         }
+        System.out.println("wtf");
     }
     private String assignTypeOfCharacter(Scanner input) throws InterruptedException {
         String type;

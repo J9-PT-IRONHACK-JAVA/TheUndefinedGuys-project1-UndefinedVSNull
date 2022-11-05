@@ -2,16 +2,20 @@ import java.util.Scanner;
 
 public class Menu {
     Lobby lobby = new Lobby();
-
+    //Battlefield battlefield = new Battlefield();
     public void main() throws InterruptedException {
         Scanner input = new Scanner(System.in);
+
         System.out.println(printTitle());
         System.out.println(menuMessage());
         String gameModeInput = input.nextLine();
         gameMode(Integer.parseInt(gameModeInput));
+
         System.out.println(teamCreationModeMessage());
         String creationModeInput = input.nextLine();
-        lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
+        lobby.createLobby(Integer.parseInt(creationModeInput), input);
+        //lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
+        //battlefield.createBattle(lobby);
         input.close();
     }
 
@@ -57,7 +61,7 @@ public class Menu {
     }
     public static void makeItSlow(String arcade) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
-            Thread.sleep(250);
+            Thread.sleep(50); //better to have in 210 for the final project
             System.out.print(arcade.charAt(i));
         }
     }
