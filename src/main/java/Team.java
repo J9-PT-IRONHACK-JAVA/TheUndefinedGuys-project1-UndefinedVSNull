@@ -12,6 +12,9 @@ public class Team {
         this.teamCharacters = teamCharacters;
     }
 
+    public Team() {
+    }
+
     //Getters
     public ArrayList getTeamCharacters() {
         return teamCharacters;
@@ -20,8 +23,8 @@ public class Team {
     //Add Characters - Custom Mode
     private void addCharactersCustom(String[] charStats){
 
-        if(charStats[1].equals("Warrior")){
-            Warrior wa = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
+        if(charStats[0].equals("Warrior")){
+            Warrrior wa = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             this.teamCharacters.add(wa.toString());
         }
         else if(charStats[1].equals("Wizard")){

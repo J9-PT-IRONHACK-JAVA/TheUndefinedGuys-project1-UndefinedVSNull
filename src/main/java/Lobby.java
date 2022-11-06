@@ -1,6 +1,10 @@
 public class Lobby {
-    //private Team teamOne;
-    //private Team teamTwo;
+    private Team teamOne = new Team();
+    private Team teamTwo;
+
+    public Team getTeamOne() {
+        return teamOne;
+    }
 
     Lobby() {}
 
