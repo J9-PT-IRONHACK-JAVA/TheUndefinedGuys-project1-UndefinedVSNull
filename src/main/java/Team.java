@@ -13,16 +13,21 @@ public class Team {
         this.teamCharacters = teamCharacters;
     }
 
+    public Team() {
+    }
+
     //Getters
     public ArrayList getTeamCharacters() {
         return teamCharacters;
     }
 
     //Add Characters - Custom Mode
+
     public void addCharactersCustom(String[] charStats){
         if(charStats[1].equals("Warrior")){
             Warrior a = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             teamCharacters.add(a);
+
         }
         else if(charStats[1].equals("Wizard")){
             Wizard i = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));

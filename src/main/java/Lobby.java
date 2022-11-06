@@ -1,8 +1,15 @@
 import java.util.Scanner;
 
 public class Lobby {
+
     private final Team teamOne = new Team();
     private final Team teamTwo = new Team();
+
+    public Team getTeamOne() {
+        return teamOne;
+    }
+
+
     Lobby() {}
 
     public void createLobby(int creationMode, Scanner input) throws InterruptedException{
