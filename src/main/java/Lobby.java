@@ -9,14 +9,17 @@ public class Lobby {
         int capacity = teamCapacity(input);
         switch (creationMode) {
             case 1:
-                //presentationMessage(teamOne);
+                presentationMessage("TEAMONE");
                 creatingCustomized(teamOne, capacity, input);
-                //presentationMessage(teamtwo);
+                presentationMessage("TEAMTWO");
                 creatingCustomized(teamTwo, capacity, input);
+                break;
             case 2:
                 creatingRandom();
+                break;
             case 3:
                 creatingFomCSV();
+                break;
         }
     }
     public int teamCapacity(Scanner input) {
@@ -37,7 +40,6 @@ public class Lobby {
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power", input);
             team.addCharactersCustom(charStats);
         }
-        System.out.println("wtf");
     }
     private String assignTypeOfCharacter(Scanner input) throws InterruptedException {
         String type;
@@ -96,7 +98,12 @@ public class Lobby {
     public void creatingFomCSV() {
         //TODO
     }
-
+    public void presentationMessage(String str) throws InterruptedException {
+        String msg = ("""
+                WELCOME TEAM %s
+                """.formatted(str));
+        Menu.makeItSlow(msg);
+    }
     @Override
     public String toString() {
         return null;

@@ -24,10 +24,13 @@ public class Menu {
         switch (n) {
             case 1:
                 System.out.println("PLAYER VS IA");
+                break;
             case 2:
                 System.out.println("PLAYER VS PLAYER");
+                break;
             case 3:
                 System.out.println("IA VS IA");
+                break;
         }
 
     }
