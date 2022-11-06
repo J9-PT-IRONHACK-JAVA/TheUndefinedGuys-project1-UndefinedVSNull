@@ -1,8 +1,14 @@
 import java.util.Scanner;
 
 public class Lobby {
+
     private Team teamOne;
     private Team teamTwo;
+
+    public Team getTeamOne() {
+        return teamOne;
+    }
+
 
     Lobby() {}
 
