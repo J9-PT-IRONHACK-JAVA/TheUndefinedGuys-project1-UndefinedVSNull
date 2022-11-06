@@ -6,12 +6,16 @@ public class Menu {
     public void main() throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
-        System.out.println(printTitle());
-        System.out.println(menuMessage());
+        System.out.print(TerminalTools.CLEAR_SCREEN);
+        System.out.println(TerminalTools.ANSI_RED + printTitle());
+        System.out.println(TerminalTools.ANSI_RESET + linesSeparationMessage());
+        makeItSlow(menuMessage());
+        //System.out.print(TerminalTools.CURSOR_MIDDLE);
         String gameModeInput = input.nextLine();
         gameMode(Integer.parseInt(gameModeInput));
-
-        System.out.println(teamCreationModeMessage());
+        System.out.print(TerminalTools.CLEAR_SCREEN);
+        System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
+        makeItSlow(teamCreationModeMessage());
         String creationModeInput = input.nextLine();
         lobby.createLobby(Integer.parseInt(creationModeInput), input);
         //lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
@@ -44,28 +48,36 @@ public class Menu {
                                                                                                /____/                               \s
                 """;
     }
+    private String linesSeparationMessage() {
+        return """
+                ======================================================================================================================
+                """;
+    }
     private String menuMessage() {
         return """
-                ----------------
-                How would you like to play?
-                [1] - Player vs IA
-                [2] - Player vs Player
-                [3] - IA vs IA
+                \t\t\t\t\t\tHOW WOULD YOU LIKE TO PLAY?
+                \t\t\t\t\t\t\t[1] - 1 PLAYER
+                \t\t\t\t\t\t\t[2] - 2 PLAYERS
+                \t\t\t\t\t\t\t[3] - NO PLAYER
+
                 """;
     }
     private String teamCreationModeMessage() {
         return """
-                ----------------
-                How would you like to create your team?
-                [1] - Full customized
-                [2] - Full random
-                [3] - Import from CSV
+                \t\t\t\t\t\tHOW WOULD YOU LIKE TO CREATE YOUR TEAM?
+                \t\t\t\t\t\t\t[1] - Full customized
+                \t\t\t\t\t\t\t[2] - Full random
+                \t\t\t\t\t\t\t[3] - Import from CSV
+
                 """;
     }
     public static void makeItSlow(String arcade) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
-            Thread.sleep(50); //better to have in 210 for the final project
-            System.out.print(arcade.charAt(i));
+            if (arcade.charAt(i) != '\t') {
+                Thread.sleep(50); //better to have in 210 for the final project
+                System.out.print(arcade.charAt(i));
+            } else
+                System.out.print(arcade.charAt(i));
         }
     }
 

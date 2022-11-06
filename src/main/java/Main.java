@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("Hello world!");
         // Alfred Testing
         Menu menu = new Menu();
         menu.main();
