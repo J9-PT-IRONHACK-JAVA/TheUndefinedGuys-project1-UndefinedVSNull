@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     Lobby lobby = new Lobby();
-    //Battlefield battlefield = new Battlefield();
+
     public void main() throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
@@ -18,8 +18,8 @@ public class Menu {
         makeItSlow(teamCreationModeMessage());
         String creationModeInput = input.nextLine();
         lobby.createLobby(Integer.parseInt(creationModeInput), input);
-        //lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
-        //battlefield.createBattle(lobby);
+        Battlefield battlefield = new Battlefield(lobby);
+        battlefield.battle();
         input.close();
     }
 
