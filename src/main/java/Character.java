@@ -1,8 +1,7 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import net.datafaker.Faker;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
+
 
 public abstract class Character implements Attacker{
     //Variables
@@ -94,33 +93,18 @@ public abstract class Character implements Attacker{
         Random value= new Random();
         return value.nextInt(valueMin, valueMax+1);
     }
-    String randomNames() throws FileNotFoundException {
+    String randomNames() {
 
-        if (!existsArrayOfNames) fillArrayOfNames();    //No funciona porque el array se inicializa en cada nuevo instanciación del Character
+        Faker faker = new Faker();
 
-        return arrayOfNames[(randomParameters(0, arrayOfNames.length-1))];
-    }
-
-    void fillArrayOfNames() throws FileNotFoundException {
-        int cont=0;
-        String[] captureLine=new String[2];
-
-        existsArrayOfNames=true;
-
-        //Instanciamos File y Scanner
-        //source file's names https://codebeautify.org/lord-of-the-rings-name-generator
-        File file=new File("lord-of-the-rings-name-generator.txt");
-        String line;
-        Scanner scRead=new Scanner(file);
-
-        while (scRead.hasNext()){
-            line= scRead.nextLine();
-            captureLine=line.split(",");
-
-            arrayOfNames[cont]=captureLine[0];
-            cont++;
+        switch (characterType) {
+            case 'a':
+                return faker.gameOfThrones().character();
+            case 'i':
+                return faker.harryPotter().character();
         }
-        scRead.close();
+        return "";
     }
-
 }
+
+
