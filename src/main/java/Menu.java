@@ -4,20 +4,24 @@ public class Menu {
     Lobby lobby = new Lobby();
     //Battlefield battlefield = new Battlefield();
     public void main() throws InterruptedException {
+
         Scanner input = new Scanner(System.in);
 
         System.out.print(TerminalTools.CLEAR_SCREEN);
-        System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
-        System.out.println(linesSeparationMessage());
-        makeItSlow(menuMessage());
+
+        System.out.println(TerminalTools.ANSI_RED + printTitle());
+        System.out.println(TerminalTools.ANSI_RESET + linesSeparationMessage());
+        makeItSlow(menuMessage(), 5);
         //System.out.print(TerminalTools.CURSOR_MIDDLE);
         String gameModeInput = input.nextLine();
         gameMode(Integer.parseInt(gameModeInput));
         System.out.print(TerminalTools.CLEAR_SCREEN);
         System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
-        makeItSlow(teamCreationModeMessage());
+        makeItSlow(teamCreationModeMessage(), 5);
         String creationModeInput = input.nextLine();
         lobby.createLobby(Integer.parseInt(creationModeInput), input);
+
+        //listar los integrantes del equipo
         //lobby.teamCapacity(Integer.parseInt(creationModeInput), input);
         //battlefield.createBattle(lobby);
         input.close();
@@ -36,6 +40,7 @@ public class Menu {
                 System.out.println("IA VS IA");
                 break;
         }
+
     }
     private String printTitle() {
         return """
@@ -70,10 +75,10 @@ public class Menu {
 
                 """;
     }
-    public static void makeItSlow(String arcade) throws InterruptedException {
+    public static void makeItSlow(String arcade, int time) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             if (arcade.charAt(i) != '\t') {
-                Thread.sleep(10); //better to have in 50 for the final project
+                Thread.sleep(time); //better to have in 210 for the final project
                 System.out.print(arcade.charAt(i));
             } else
                 System.out.print(arcade.charAt(i));

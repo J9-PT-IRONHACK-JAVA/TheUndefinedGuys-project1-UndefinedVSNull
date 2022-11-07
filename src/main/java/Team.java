@@ -5,29 +5,19 @@ import java.util.ArrayList;
 public class Team {
 
     String charType;
-    ArrayList<Character> teamCharacters;
+    ArrayList<Character> teamCharacters = new ArrayList<>();
 
     //Constructor
     public Team() {}
-    public Team(ArrayList teamCharacters) {
-        this.teamCharacters = teamCharacters;
-    }
-    //Getters
-    public ArrayList getTeamCharacters() {
-        return teamCharacters;
-    }
-
-    //Add Characters - Custom Mode
 
     public void addCharactersCustom(String[] charStats){
-        if(charStats[1].equals("Warrior")){
+        if(charStats[0].equals("1")){
             Warrior a = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             teamCharacters.add(a);
-
         }
-        else if(charStats[1].equals("Wizard")){
+        else if(charStats[0].equals("2")){
             Wizard i = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(i);
+            teamCharacters.add(i);
         }
     }
 

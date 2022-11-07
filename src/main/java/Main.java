@@ -18,8 +18,7 @@ public class Main {
                 new Warrior("Pepe",1000,1000,1000),
                 new Warrior("Pepe",-1000,1000,1000)
         ));
-
-
+        /*
         characterArrayList.get(0).setName("Federico");
         System.out.println(characterArrayList);
         */

@@ -33,7 +33,7 @@ public class Lobby {
     }
     public int teamCapacity(Scanner input) {
         String size;
-        System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
+        System.out.println("\t\t\t\t\t\tHow many characters would you like on your team?");
         size = input.nextLine();
         return (Integer.parseInt(size));
     }
@@ -77,7 +77,7 @@ public class Lobby {
             //Menu.makeItSlow(character);
             i++;
         }
-        Menu.makeItSlow(character);
+        Menu.makeItSlow(character, 50);
     }
     private String AssignValueAndShowDialogueWithIntegers(String dialogue, Scanner input) {
         boolean comparision;
@@ -110,10 +110,24 @@ public class Lobby {
         //TODO
     }
     public void presentationMessage(String str) throws InterruptedException {
-        String msg = ("""
-                \t\t\t\t\t\tWELCOME TEAM %s
-                """.formatted(str));
-        Menu.makeItSlow(msg);
+        String teamOne = ("""
+                 _       __     __                             _______________    __  _______  _   ________   _________
+                | |     / /__  / /________  ____ ___  ___     /_  __/ ____/   |  /  |/  / __ \\/ | / / ____/  /_  __<  /
+                | | /| / / _ \\/ / ___/ __ \\/ __ `__ \\/ _ \\     / / / __/ / /| | / /|_/ / / / /  |/ / __/      / /  / /\s
+                | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/    / / / /___/ ___ |/ /  / / /_/ / /|  / /___     / /  / / \s
+                |__/|__/\\___/_/\\___/\\____/_/ /_/ /_/\\___/    /_/ /_____/_/  |_/_/  /_/\\____/_/ |_/_____/    /_/  /_/  \s
+                                                                                                                      \s
+                """);
+        String TeamTwo = ("""
+                 _       __     __                             _______________    __  __________       ______     _________\s
+                | |     / /__  / /________  ____ ___  ___     /_  __/ ____/   |  /  |/  /_  __/ |     / / __ \\   /_  __/__ \\
+                | | /| / / _ \\/ / ___/ __ \\/ __ `__ \\/ _ \\     / / / __/ / /| | / /|_/ / / /  | | /| / / / / /    / /  __/ /
+                | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/    / / / /___/ ___ |/ /  / / / /   | |/ |/ / /_/ /    / /  / __/\s
+                |__/|__/\\___/_/\\___/\\____/_/ /_/ /_/\\___/    /_/ /_____/_/  |_/_/  /_/ /_/    |__/|__/\\____/    /_/  /____/\s
+                                                                                                                           \s
+                """);
+
+        Menu.makeItSlow(teamOne, 5);
     }
     @Override
     public String toString() {
