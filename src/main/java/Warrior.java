@@ -31,11 +31,11 @@ public class Warrior extends Character implements Attacker{
     //Full Random
     public Warrior() throws FileNotFoundException {
         super();
+        setCharacterType('a');
         setName(super.randomNames());
         setHp(randomParameters(HP_WARRIOR_MIN,HP_WARRIOR_MAX));
         stamina=super.randomParameters(STAMINA_MIN,STAMINA_MAX);
         strength =super.randomParameters(STRENGTH_MIN,STRENGTH_MAX);
-        setCharacterType('a');
     }
 
     //Setters
@@ -43,7 +43,7 @@ public class Warrior extends Character implements Attacker{
         if (stamina>STAMINA_MAX){
             this.stamina = STAMINA_MAX;
         } else if (stamina<STAMINA_MIN) {
-            this.stamina = STAMINA_MAX;
+            this.stamina = STAMINA_MIN;
         }else {
             this.stamina = stamina;
         }
