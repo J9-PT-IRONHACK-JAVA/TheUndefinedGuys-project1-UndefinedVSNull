@@ -35,19 +35,19 @@ public class Wizard extends Character implements Attacker{
 
     //SETTERS
     public void setMana(int mana) {
-        if(mana>MANA_MAX){
-            setMana(MANA_MAX);
-        } else if (mana<MANA_MIN) {
-            setMana(MANA_MIN);
+        if(mana > MANA_MAX){
+            this.mana = MANA_MAX;
+        } else if (mana < MANA_MIN) {
+            this.mana = MANA_MIN;
         }else
-            this.mana=mana;
+            this.mana = mana;
     }
 
     public void setIntelligence(int intelligence) {
-        if (intelligence>INTELLIGENCE_MAX){
-            setIntelligence(INTELLIGENCE_MAX);
-        } else if (intelligence<INTELLIGENCE_MIN) {
-            setIntelligence(INTELLIGENCE_MIN);
+        if (intelligence > INTELLIGENCE_MAX){
+            this.intelligence = INTELLIGENCE_MAX;
+        } else if (intelligence < INTELLIGENCE_MIN) {
+            this.intelligence = INTELLIGENCE_MIN;
         }else{
             this.intelligence = intelligence;
         }
@@ -65,7 +65,7 @@ public class Wizard extends Character implements Attacker{
     //Other methods
 
     @Override
-    public int attack(Character defender) {
+    public void attack(Character defender) {
         int attackEnergy;
 
         if(mana>=5){
@@ -84,7 +84,7 @@ public class Wizard extends Character implements Attacker{
             //setting Damage
             defender.setHp(defender.getHp()-2);
         }
-        return attackEnergy;
+
     }
     @Override
     public String toString() {

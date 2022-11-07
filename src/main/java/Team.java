@@ -1,50 +1,72 @@
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
 
-    String charType;
-    ArrayList<Character> teamCharacters;
+    private List<Character> teamCharacters;
 
     //Constructor
-    public Team() {}
-    public Team(ArrayList teamCharacters) {
+    public Team() {
+        teamCharacters = new ArrayList<>();
+    }
+
+    public void setTeamCharacters(List<Character> teamCharacters) {
         this.teamCharacters = teamCharacters;
     }
 
-    public Team() {
-    }
-
     //Getters
-    public ArrayList getTeamCharacters() {
+    public List<Character> getTeamCharacters() {
         return teamCharacters;
     }
 
     //Add Characters - Custom Mode
 
-    public void addCharactersCustom(String[] charStats){
-        if(charStats[1].equals("Warrior")){
-            Warrior a = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            teamCharacters.add(a);
+    public void addCharactersCustom(String[] charStats) {
+        //checkAvailability(charStats[1]);
 
-        }
-        else if(charStats[1].equals("Wizard")){
-            Wizard i = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(i);
+        if (charStats[0].equals("1")) {
+            Warrior war = new Warrior(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
+            teamCharacters.add(war);
+            System.out.println("New Warrior added!");
+        } else if (charStats[0].equals("2")) {
+            Wizard wiz = new Wizard(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
+            this.teamCharacters.add(wiz);
+            System.out.println("New Wizard added!");
         }
     }
+
+    //public void checkAvailability(String a){
+//}
 
     //Add Characters - Random Mode
-    private void addCharactersRandom(String charType) throws FileNotFoundException {
+//    public void addCharactersRandom(int capacity) throws FileNotFoundException {
+//        int[] team = new int[capacity];
+//        //team = determineCharType(capacity);
+//        for (int i = 0; i < team.length; i++) {
+//            if(team[i] == 1){
+//                Warrior war = new Warrior();
+//                teamCharacters.add(war);
+//            }
+//            else if(team[i] == 2){
+//                Wizard wiz = new Wizard();
+//                this.teamCharacters.add(wiz);
+//            }
+//        }
+//    }
 
-        if(charType.equals("Warrior")){
-            Warrior war = new Warrior();
-            teamCharacters.add(war);
+
+
+    public boolean checkAllDead(){
+        boolean allDead = true;
+        for(Character c: getTeamCharacters()){
+            if(c.isAlive()){
+                allDead=false;
+                break;
+            }
         }
-        else if(charType.equals("Wizard")){
-            Wizard wiz = new Wizard();
-            this.teamCharacters.add(wiz);
-        }
+        return allDead;
     }
 }
+

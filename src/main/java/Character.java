@@ -25,12 +25,12 @@ public abstract class Character implements Attacker{
         setHp(hp);
         isAlive = true;
     }
+
     //FullRandom
     public Character() {
         IdSiguiente++;
         id=IdSiguiente;
         isAlive=true;
-
     }
 
     //SETTERS
@@ -40,10 +40,9 @@ public abstract class Character implements Attacker{
 
     public void setHp(int hp) {
         if (hp<=0) {
-            setHp(0);
+            this.hp = 0;
             isAlive = false;
         }else {
-
             this.hp = hp;
         }
     }
@@ -100,9 +99,8 @@ public abstract class Character implements Attacker{
         if (!existsArrayOfNames) fillArrayOfNames();    //No funciona porque el array se inicializa en cada nuevo instanciación del Character
 
         return arrayOfNames[(randomParameters(0, arrayOfNames.length-1))];
-
-
     }
+
     void fillArrayOfNames() throws FileNotFoundException {
         int cont=0;
         String[] captureLine=new String[2];

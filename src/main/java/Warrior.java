@@ -41,9 +41,9 @@ public class Warrior extends Character implements Attacker{
     //Setters
     public void setStamina(int stamina) {
         if (stamina>STAMINA_MAX){
-            setStamina(STAMINA_MAX);
+            this.stamina = STAMINA_MAX;
         } else if (stamina<STAMINA_MIN) {
-            setStamina(STAMINA_MAX);
+            this.stamina = STAMINA_MAX;
         }else {
             this.stamina = stamina;
         }
@@ -51,9 +51,9 @@ public class Warrior extends Character implements Attacker{
 
     public void setStrength(int strength) {
         if (strength > STRENGTH_MAX){
-            setStrength(STRENGTH_MAX);
+            this.strength = STRENGTH_MAX;
         } else if (strength < STRENGTH_MIN) {
-            setStrength(STRENGTH_MIN);
+            this.strength = STRENGTH_MIN;
         }else {
             this.strength = strength;
         }
@@ -70,26 +70,29 @@ public class Warrior extends Character implements Attacker{
 
     //Other methods
     @Override
-    public int attack(Character defender) {
-        int attackEnergy;
+    public void attack(Character defender) {
+        int attackEnergy = 0;
 
         if(stamina>=5){
-            //Heavy attack
+            System.out.println("Heavy attack!");
             attackEnergy=1;
             //Actualiza stamina
             setStamina(stamina-=5);
             //setting Damage
             defender.setHp(defender.getHp()-strength);
+            System.out.println("Defender hp reduced to "+defender.getHp());
+            System.out.println("Defender Stamina reduced to "+getStamina());
         }
         else{
-            //Weak attack
+            System.out.println("Weak attack!");
             attackEnergy=0;
             //Actualiza stamina
             setStamina(stamina+=1);
             //setting Damage
             defender.setHp(defender.getHp()- (int) (strength/2));
+            System.out.println("Defender hp reduced to "+defender.getHp());
+            System.out.println("Defender Stamina reduced to "+getStamina());
         }
-        return attackEnergy;
     }
 
     @Override

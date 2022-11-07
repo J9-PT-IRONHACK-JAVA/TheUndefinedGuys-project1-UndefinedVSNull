@@ -1,58 +1,51 @@
 import java.util.Scanner;
 
-public class Battlefield implements Attacker extends {
+public class Battlefield {
 
-    Lobby lobby;
+    private Lobby lobby;
 
     //contructor
-    public Battlefield() {
-    }
-
-    public void createBattle(Lobby lobby) {
+    public Battlefield(Lobby lobby) {
         this.lobby = lobby;
     }
 
-    private void battle(){
+    public Lobby getLobby() {
+        return lobby;
+    }
+
+    public void setLobby(Lobby lobby) {
+        this.lobby = lobby;
+    }
+
+    public void battle(){
 
         int userChoice;
+        Character defender = null;
 
-        for(int i=0; i<team1.getTeamCharacters().size(); i++){
+        while(checkAllAlive()){
+            for(int i= 0 ; i< lobby.getTeamOne().getTeamCharacters().size(); i++){
 
-                System.out.println("Team 1 attacks!");
+                System.out.println("Team 1 attacks! Now attacking player number "+ (i+1));
                 System.out.println("Which character are you attacking? Choose number");
                 Scanner sc = new Scanner(System.in);
                 userChoice = sc.nextInt();
-                var defender = team2.getTeamCharacters().get(userChoice);
-                int attackType = team1.getTeamCharacters().get(i).attack(defender);
-
-                if(attackType == 1){
-                    System.out.println("Heavy attack!");
-                    System.out.println("Defender hp reduced to "+defender.getHp);
-                    System.out.println("Defender Stamina reduced to "+defender.getStamina);
+                try{
+                    defender = lobby.getTeamTwo().getTeamCharacters().get(userChoice-1);
                 }
+                catch (Exception e){
+                    System.out.println();
+                }
+                System.out.println("Attacking now player number "+userChoice);
+                lobby.getTeamOne().getTeamCharacters().get(userChoice).attack(defender);
+            }
         }
     }
 
-
-
-    //me devuelve array de stats
-
-    private Team checkWinnerTeam() {
-
-
-        return null;
+    private boolean checkAllAlive(){
+        return !getLobby().getTeamOne().checkAllDead() || !getLobby().getTeamTwo().checkAllDead();
     }
-
-    private int announceWinner(){
-
-        if()
-    };
+}
 
 
-
-    @Override
-    public void attack() {
-
-    }
 
 

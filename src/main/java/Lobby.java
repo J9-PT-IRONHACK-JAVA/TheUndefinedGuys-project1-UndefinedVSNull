@@ -1,25 +1,33 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lobby {
 
-    private final Team teamOne = new Team();
-    private final Team teamTwo = new Team();
+    public final Team teamOne = new Team();
+    public final Team teamTwo = new Team();
+
 
     public Team getTeamOne() {
         return teamOne;
     }
 
+    public Team getTeamTwo() {
+        return teamTwo;
+    }
 
-    Lobby() {}
 
     public void createLobby(int creationMode, Scanner input) throws InterruptedException{
-        int capacity = teamCapacity(input);
+
         switch (creationMode) {
             case 1:
-                presentationMessage("TEAMONE");
+                int capacity = teamCapacity(input);
+                presentationMessage("TEAM ONE");
                 creatingCustomized(teamOne, capacity, input);
-                presentationMessage("TEAMTWO");
+                System.out.println("Team 1 creado! " + teamOne.getTeamCharacters());
+                capacity = teamCapacity(input);
+                presentationMessage("TEAM TWO");
                 creatingCustomized(teamTwo, capacity, input);
+                System.out.println("Team 2 creado! "+teamTwo.getTeamCharacters());
                 break;
             case 2:
                 creatingRandom();
@@ -28,7 +36,10 @@ public class Lobby {
                 creatingFomCSV();
                 break;
         }
+
+
     }
+
     public int teamCapacity(Scanner input) {
         String size;
         System.out.println("How many characters would you like on your team?");
@@ -107,7 +118,7 @@ public class Lobby {
     }
     public void presentationMessage(String str) throws InterruptedException {
         String msg = ("""
-                WELCOME TEAM %s
+                WELCOME %s
                 """.formatted(str));
         Menu.makeItSlow(msg);
     }
