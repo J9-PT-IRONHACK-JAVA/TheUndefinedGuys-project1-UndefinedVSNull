@@ -1,20 +1,20 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public abstract class Character {
-    //Constants
-    private static int IdSiguiente=0;
+public abstract class Character implements Attacker{
     //Variables
+    private static int IdSiguiente=0;
     private int id;
     private String name;
     private int hp;
     private boolean isAlive;
     private char characterType;
-
     private boolean existsArrayOfNames;
     String[] arrayOfNames=new String[172];
+
 
     //CONSTRUCTORS
     //FullCustomized
@@ -39,7 +39,13 @@ public abstract class Character {
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        if (hp<=0) {
+            setHp(0);
+            isAlive = false;
+        }else {
+
+            this.hp = hp;
+        }
     }
 
     public void setAlive(boolean alive) {
@@ -71,6 +77,19 @@ public abstract class Character {
         return characterType;
     }
 
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", hp=" + hp +
+                ", isAlive=" + isAlive +
+                ", characterType=" + characterType +
+                ", existsArrayOfNames=" + existsArrayOfNames +
+                ", arrayOfNames=" + Arrays.toString(arrayOfNames) +
+                '}';
+    }
+
     //OTHER METHODS
     int randomParameters(int valueMin, int valueMax){
         Random value= new Random();
@@ -80,7 +99,7 @@ public abstract class Character {
 
         if (!existsArrayOfNames) fillArrayOfNames();    //No funciona porque el array se inicializa en cada nuevo instanciación del Character
 
-        return arrayOfNames[(randomParameters(0, arrayOfNames.length))];
+        return arrayOfNames[(randomParameters(0, arrayOfNames.length-1))];
 
 
     }
