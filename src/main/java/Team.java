@@ -12,10 +12,6 @@ public class Team {
     public Team(ArrayList teamCharacters) {
         this.teamCharacters = teamCharacters;
     }
-
-    public Team() {
-    }
-
     //Getters
     public ArrayList getTeamCharacters() {
         return teamCharacters;

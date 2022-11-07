@@ -7,8 +7,8 @@ public class Menu {
         Scanner input = new Scanner(System.in);
 
         System.out.print(TerminalTools.CLEAR_SCREEN);
-        System.out.println(TerminalTools.ANSI_RED + printTitle());
-        System.out.println(TerminalTools.ANSI_RESET + linesSeparationMessage());
+        System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
+        System.out.println(linesSeparationMessage());
         makeItSlow(menuMessage());
         //System.out.print(TerminalTools.CURSOR_MIDDLE);
         String gameModeInput = input.nextLine();
@@ -36,7 +36,6 @@ public class Menu {
                 System.out.println("IA VS IA");
                 break;
         }
-
     }
     private String printTitle() {
         return """
@@ -74,7 +73,7 @@ public class Menu {
     public static void makeItSlow(String arcade) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             if (arcade.charAt(i) != '\t') {
-                Thread.sleep(50); //better to have in 210 for the final project
+                Thread.sleep(10); //better to have in 50 for the final project
                 System.out.print(arcade.charAt(i));
             } else
                 System.out.print(arcade.charAt(i));

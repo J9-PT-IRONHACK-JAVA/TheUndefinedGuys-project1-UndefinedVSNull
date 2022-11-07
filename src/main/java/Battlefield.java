@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/*
 public class Battlefield implements Attacker extends {
 
     Lobby lobby;
@@ -55,4 +55,4 @@ public class Battlefield implements Attacker extends {
 
     }
 
-
+*/

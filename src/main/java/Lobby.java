@@ -16,9 +16,11 @@ public class Lobby {
         int capacity = teamCapacity(input);
         switch (creationMode) {
             case 1:
-                presentationMessage("TEAMONE");
+                System.out.print(TerminalTools.CLEAR_SCREEN);
+                presentationMessage("TEAMONE"); //make it as title
                 creatingCustomized(teamOne, capacity, input);
-                presentationMessage("TEAMTWO");
+                System.out.print(TerminalTools.CLEAR_SCREEN);
+                presentationMessage("TEAMTWO"); // make it as title
                 creatingCustomized(teamTwo, capacity, input);
                 break;
             case 2:
@@ -31,7 +33,7 @@ public class Lobby {
     }
     public int teamCapacity(Scanner input) {
         String size;
-        System.out.println("How many characters would you like on your team?");
+        System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
         size = input.nextLine();
         return (Integer.parseInt(size));
     }
@@ -53,8 +55,7 @@ public class Lobby {
         boolean comparision;
         do {
             System.out.println("""
-                    What do you want to create?
-                    ================
+                    \t\t\t\t\t\tWhat do you want to create?
                     """);
             showCharacters();
             type = input.nextLine();
@@ -66,14 +67,17 @@ public class Lobby {
     }
     private void showCharacters() throws InterruptedException {
         // Show it like is charging, like old...
-        String character;
+        String character = "";
         int i = 1;
+        // Make in the same line
         for (CharacterType charType: CharacterType.values()) {
-            System.out.printf("[%d] - ", i);
-            character = "%s\n".formatted(charType);
-            Menu.makeItSlow(character);
+            character += "\t\t\t[%d] - ".formatted(i);
+            //System.out.printf("[%d] - ", i);
+            character += "%s\t\t\t\t".formatted(charType);
+            //Menu.makeItSlow(character);
             i++;
         }
+        Menu.makeItSlow(character);
     }
     private String AssignValueAndShowDialogueWithIntegers(String dialogue, Scanner input) {
         boolean comparision;
@@ -107,7 +111,7 @@ public class Lobby {
     }
     public void presentationMessage(String str) throws InterruptedException {
         String msg = ("""
-                WELCOME TEAM %s
+                \t\t\t\t\t\tWELCOME TEAM %s
                 """.formatted(str));
         Menu.makeItSlow(msg);
     }
