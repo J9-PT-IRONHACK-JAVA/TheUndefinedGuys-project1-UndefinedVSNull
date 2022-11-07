@@ -5,11 +5,15 @@ import java.util.ArrayList;
 public class Team {
 
     String charType;
-    ArrayList<String> teamCharacters;
+    ArrayList<Character> teamCharacters;
 
     //Constructor
+    public Team() {}
     public Team(ArrayList teamCharacters) {
         this.teamCharacters = teamCharacters;
+    }
+
+    public Team() {
     }
 
     //Getters
@@ -18,15 +22,16 @@ public class Team {
     }
 
     //Add Characters - Custom Mode
-    private void addCharactersCustom(String[] charStats){
 
+    public void addCharactersCustom(String[] charStats){
         if(charStats[1].equals("Warrior")){
-            Warrior wa = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(wa.toString());
+            Warrior a = new Warrior(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
+            teamCharacters.add(a);
+
         }
         else if(charStats[1].equals("Wizard")){
-            Wizard wi = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
-            this.teamCharacters.add(wi.toString());
+            Wizard i = new Wizard(charStats[0], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
+            this.teamCharacters.add(i);
         }
     }
 
@@ -34,12 +39,12 @@ public class Team {
     private void addCharactersRandom(String charType) throws FileNotFoundException {
 
         if(charType.equals("Warrior")){
-            Warrior wa = new Warrior();
-            this.teamCharacters.add(wa.toString());
+            Warrior war = new Warrior();
+            teamCharacters.add(war);
         }
         else if(charType.equals("Wizard")){
-            Wizard wi = new Wizard();
-            this.teamCharacters.add(wi.toString());
+            Wizard wiz = new Wizard();
+            this.teamCharacters.add(wiz);
         }
     }
 }
