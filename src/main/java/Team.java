@@ -88,11 +88,8 @@ public class Team {
 //    }
     
 
-
-
-
-
     public boolean checkAllDead(){
+
         boolean allDead = true;
         for(Character c: getTeamCharacters()){
             if(c.isAlive()){
