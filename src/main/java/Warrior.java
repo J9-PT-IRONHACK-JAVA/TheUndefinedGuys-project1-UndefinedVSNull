@@ -31,19 +31,19 @@ public class Warrior extends Character implements Attacker{
     //Full Random
     public Warrior() throws FileNotFoundException {
         super();
+        setCharacterType('a');
         setName(super.randomNames());
         setHp(randomParameters(HP_WARRIOR_MIN,HP_WARRIOR_MAX));
         stamina=super.randomParameters(STAMINA_MIN,STAMINA_MAX);
         strength =super.randomParameters(STRENGTH_MIN,STRENGTH_MAX);
-        setCharacterType('a');
     }
 
     //Setters
     public void setStamina(int stamina) {
         if (stamina>STAMINA_MAX){
-            setStamina(STAMINA_MAX);
+            this.stamina = STAMINA_MAX;
         } else if (stamina<STAMINA_MIN) {
-            setStamina(STAMINA_MAX);
+            this.stamina = STAMINA_MIN;
         }else {
             this.stamina = stamina;
         }
@@ -51,9 +51,9 @@ public class Warrior extends Character implements Attacker{
 
     public void setStrength(int strength) {
         if (strength > STRENGTH_MAX){
-            setStrength(STRENGTH_MAX);
+            this.strength = STRENGTH_MAX;
         } else if (strength < STRENGTH_MIN) {
-            setStrength(STRENGTH_MIN);
+            this.strength = STRENGTH_MIN;
         }else {
             this.strength = strength;
         }
@@ -70,26 +70,22 @@ public class Warrior extends Character implements Attacker{
 
     //Other methods
     @Override
-    public int attack(Character defender) {
-        int attackEnergy;
+    public void attack(Character defender) {
 
         if(stamina>=5){
-            //Heavy attack
-            attackEnergy=1;
-            //Actualiza stamina
+            System.out.println("Warrior "+getName() +" did a heavy attack!");
             setStamina(stamina-=5);
-            //setting Damage
             defender.setHp(defender.getHp()-strength);
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
         }
         else{
-            //Weak attack
-            attackEnergy=0;
-            //Actualiza stamina
+            System.out.println("Warrior "+getName() +" did a weak attack!");
             setStamina(stamina+=1);
-            //setting Damage
-            defender.setHp(defender.getHp()- (int) (strength/2));
+            defender.setHp(defender.getHp()- (strength/2));
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
         }
-        return attackEnergy;
     }
 
     @Override

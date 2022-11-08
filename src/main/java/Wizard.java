@@ -26,28 +26,28 @@ public class Wizard extends Character implements Attacker{
     //Full random
     public Wizard() throws FileNotFoundException {
         super();
+        setCharacterType('i');
         setName(super.randomNames());
         setHp(randomParameters(HP_WIZARD_MIN,HP_WIZARD_MAX));
         setMana(randomParameters(MANA_MIN,MANA_MAX));
         setIntelligence(randomParameters(INTELLIGENCE_MIN,INTELLIGENCE_MAX));
-        setCharacterType('i');
     }
 
     //SETTERS
     public void setMana(int mana) {
-        if(mana>MANA_MAX){
-            setMana(MANA_MAX);
-        } else if (mana<MANA_MIN) {
-            setMana(MANA_MIN);
+        if(mana > MANA_MAX){
+            this.mana = MANA_MAX;
+        } else if (mana < MANA_MIN) {
+            this.mana = MANA_MIN;
         }else
-            this.mana=mana;
+            this.mana = mana;
     }
 
     public void setIntelligence(int intelligence) {
-        if (intelligence>INTELLIGENCE_MAX){
-            setIntelligence(INTELLIGENCE_MAX);
-        } else if (intelligence<INTELLIGENCE_MIN) {
-            setIntelligence(INTELLIGENCE_MIN);
+        if (intelligence > INTELLIGENCE_MAX){
+            this.intelligence = INTELLIGENCE_MAX;
+        } else if (intelligence < INTELLIGENCE_MIN) {
+            this.intelligence = INTELLIGENCE_MIN;
         }else{
             this.intelligence = intelligence;
         }
@@ -65,26 +65,23 @@ public class Wizard extends Character implements Attacker{
     //Other methods
 
     @Override
-    public int attack(Character defender) {
-        int attackEnergy;
+    public void attack(Character defender) {
 
         if(mana>=5){
-            //FireBall
-            attackEnergy=1;
-            //Actualiza stamina
+            System.out.println("Fireball Casted!");
             setMana(mana-=5);
-            //setting Damage
             defender.setHp(defender.getHp()-intelligence);
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
         }
         else{
-            //Staff hit
-            attackEnergy=0;
-            //Actualiza stamina
+            System.out.println("Staff hit!");
             setMana(mana+=1);
-            //setting Damage
             defender.setHp(defender.getHp()-2);
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
         }
-        return attackEnergy;
+
     }
     @Override
     public String toString() {
