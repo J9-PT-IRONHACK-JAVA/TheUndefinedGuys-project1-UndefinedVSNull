@@ -22,15 +22,19 @@ public class Team {
     }
 
     //Add Characters - Random Mode
-    private void addCharactersRandom(String charType) throws FileNotFoundException {
-
-        if(charType.equals("Warrior")){
-            Warrior war = new Warrior();
-            teamCharacters.add(war);
-        }
-        else if(charType.equals("Wizard")){
-            Wizard wiz = new Wizard();
-            this.teamCharacters.add(wiz);
+    public void addCharactersRandom(int capacity) throws FileNotFoundException {
+        int[] team = new int[capacity];
+        //team = determineCharType(capacity);
+        for (int i = 0; i < team.length; i++) {
+            if(team[i] == 1){
+                Warrior war = new Warrior();
+                teamCharacters.add(war);
+            }
+            else if(team[i] == 2){
+                Wizard wiz = new Wizard();
+                this.teamCharacters.add(wiz);
+            }
         }
     }
+
 }

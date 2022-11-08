@@ -1,9 +1,10 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Menu {
     Lobby lobby = new Lobby();
     //Battlefield battlefield = new Battlefield();
-    public void main() throws InterruptedException {
+    public void main() throws InterruptedException, FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
 
