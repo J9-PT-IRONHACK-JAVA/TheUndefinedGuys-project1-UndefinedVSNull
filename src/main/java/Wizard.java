@@ -1,6 +1,6 @@
 import java.io.FileNotFoundException;
 
-public class Wizard extends Character{
+public class Wizard extends Character implements Attacker{
 
     final int MANA_MIN=10;
     final int MANA_MAX=50;
@@ -26,34 +26,34 @@ public class Wizard extends Character{
     //Full random
     public Wizard() throws FileNotFoundException {
         super();
+        setCharacterType('i');
         setName(super.randomNames());
         setHp(randomParameters(HP_WIZARD_MIN,HP_WIZARD_MAX));
         setMana(randomParameters(MANA_MIN,MANA_MAX));
         setIntelligence(randomParameters(INTELLIGENCE_MIN,INTELLIGENCE_MAX));
-        setCharacterType('i');
     }
-
 
     //SETTERS
     public void setMana(int mana) {
-        if(mana>MANA_MAX){
-            setMana(MANA_MAX);
-        } else if (mana<MANA_MIN) {
-            setMana(MANA_MIN);
+        if(mana > MANA_MAX){
+            this.mana = MANA_MAX;
+        } else if (mana < MANA_MIN) {
+            this.mana = MANA_MIN;
         }else
-            this.mana=mana;
+            this.mana = mana;
     }
 
     public void setIntelligence(int intelligence) {
-        if (intelligence>INTELLIGENCE_MAX){
-            setIntelligence(INTELLIGENCE_MAX);
-        } else if (intelligence<INTELLIGENCE_MIN) {
-            setIntelligence(INTELLIGENCE_MIN);
+        if (intelligence > INTELLIGENCE_MAX){
+            this.intelligence = INTELLIGENCE_MAX;
+        } else if (intelligence < INTELLIGENCE_MIN) {
+            this.intelligence = INTELLIGENCE_MIN;
         }else{
             this.intelligence = intelligence;
         }
     }
 
+    //Getters
     public int getMana() {
         return mana;
     }
@@ -62,15 +62,40 @@ public class Wizard extends Character{
         return intelligence;
     }
 
+    //Other methods
+
+    @Override
+    public void attack(Character defender) {
+        int attackEnergy;
+
+        if(mana>=5){
+            //FireBall
+            attackEnergy=1;
+            //Actualiza stamina
+            setMana(mana-=5);
+            //setting Damage
+            defender.setHp(defender.getHp()-intelligence);
+        }
+        else{
+            //Staff hit
+            attackEnergy=0;
+            //Actualiza stamina
+            setMana(mana+=1);
+            //setting Damage
+            defender.setHp(defender.getHp()-2);
+        }
+
+    }
     @Override
     public String toString() {
         return "\nWizard " +
                 getId() + " "+
                 getName()+
-                "\nhp=" + getHp()+
-                "\nmana=" + mana +
-                "\nintelligence=" + intelligence +
-                "\nType= "+getCharacterType()+
+                "\thp=" + getHp()+
+                "\tmana=" + mana +
+                "\tintelligence=" + intelligence +
+                "\tType= "+getCharacterType()+
                 "\n*************************\n";
     }
+
 }

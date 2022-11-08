@@ -16,7 +16,9 @@ public class Lobby {
                 creatingCustomized(teamOne, capacity, input);
                 System.out.print(TerminalTools.CLEAR_SCREEN);
                 presentationMessage("T2"); // make it as title
+
                 creatingCustomized(teamTwo, capacity, input);
+                System.out.println("Team 2 creado! "+teamTwo.getTeamCharacters());
                 break;
             case 2:
                 creatingRandom();
@@ -27,6 +29,7 @@ public class Lobby {
                 break;
         }
     }
+
     public int teamCapacity(Scanner input) {
         String size;
         System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
@@ -113,6 +116,7 @@ public class Lobby {
         //TODO
     }
     public void presentationMessage(String str) throws InterruptedException {
+
         // The character has 21 characters
         String teamOne = ("""
                  _       __________    __________  __  _________     _______________    __  ___   ____  _   ________     _________
@@ -165,6 +169,7 @@ public class Lobby {
                 \t\t\t                              \t\t\t        || |    (        ,' /   /   |
                 """;
         System.out.println(characters);
+
     }
     private void drawSoldier() {
         System.out.println("""
