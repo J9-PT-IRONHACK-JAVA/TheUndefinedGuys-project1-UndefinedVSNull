@@ -45,11 +45,8 @@ public class Team {
             for (Character character: teamCharacters) {
                 if(character.getName().equals(someOne.getName()))
                     character.setName(character.getName()+" Jr");
-            }    
-    
+            }   
     }
-        
-        
         
 
         //Add Characters - Random Mode
@@ -105,5 +102,6 @@ public class Team {
         }
         return allDead;
     }
+
 }
 
