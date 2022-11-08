@@ -26,11 +26,11 @@ public class Wizard extends Character implements Attacker{
     //Full random
     public Wizard() throws FileNotFoundException {
         super();
+        setCharacterType('i');
         setName(super.randomNames());
         setHp(randomParameters(HP_WIZARD_MIN,HP_WIZARD_MAX));
         setMana(randomParameters(MANA_MIN,MANA_MAX));
         setIntelligence(randomParameters(INTELLIGENCE_MIN,INTELLIGENCE_MAX));
-        setCharacterType('i');
     }
 
     //SETTERS

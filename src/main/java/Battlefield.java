@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
+
 public class Battlefield {
+
 
     private Lobby lobby;
 
@@ -76,7 +78,5 @@ public class Battlefield {
         return !getLobby().getTeamOne().checkAllDead() || !getLobby().getTeamTwo().checkAllDead();
     }
 }
-
-
 
 
