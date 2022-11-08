@@ -7,7 +7,15 @@ public class Lobby {
     private final Team teamTwo = new Team();
 
     private final Team[] teams = {teamOne, teamTwo};
-    Lobby() {}
+    public Team getTeamOne() {
+        return teamOne;
+    }
+
+    public Team getTeamTwo() {
+        return teamTwo;
+    }
+    Lobby() {
+    }
 
     public void createLobby(int creationMode, Scanner input) throws InterruptedException, FileNotFoundException {
         int capacity = teamCapacity(input);
@@ -40,6 +48,7 @@ public class Lobby {
         size = input.nextLine();
         return (Integer.parseInt(size));
     }
+
     public void creatingCustomized(Team team, int size, Scanner input) throws InterruptedException {
         //String type, name, hp, energy, power;
         String[] charStats = new String[5];
@@ -54,6 +63,7 @@ public class Lobby {
             team.addCharactersCustom(charStats);
         }
     }
+
     private String assignTypeOfCharacter(Scanner input) throws InterruptedException {
         String type;
         boolean comparision;
@@ -74,10 +84,11 @@ public class Lobby {
         }
         return type;
     }
+
     private void showCharacters() throws InterruptedException {
         String character = "";
         int i = 1;
-        for (CharacterType charType: CharacterType.values()) {
+        for (CharacterType charType : CharacterType.values()) {
             character += "\t\t\t[%d] - ".formatted(i);
             character += "%s\t\t\t\t".formatted(charType);
             i++;
@@ -85,6 +96,7 @@ public class Lobby {
         Menu.makeItSlow(character + "\n", 50);
         drawCharacters();
     }
+
     private String AssignValueAndShowDialogueWithIntegers(String dialogue, Scanner input) {
         boolean comparision;
         String value;
@@ -117,6 +129,7 @@ public class Lobby {
             //teams[i].showStats();
         }
     }
+
     public void creatingFomCSV() {
         //TODO
     }
@@ -143,68 +156,66 @@ public class Lobby {
             case 2 -> Menu.makeItSlow(teamTwo, 1);
         }
     }
-
-    private void drawCharacters() {
+    private void drawCharacters () {
         String characters = """
-                \t\t\t                              \t\t\t                       ,---.
-                \t\t\t                              \t\t\t                       /    |
-                \t\t\t      _,.                     \t\t\t                      /     |
-                \t\t\t    ,` -.)                    \t\t\t                     /      |
-                \t\t\t   ( _/-\\\\-._               \t\t\t                    /       |
-                \t\t\t  /,|`--._,-^|            ,   \t\t\t               ___,'        |
-                \t\t\t  \\_| |`-._/||          ,'|  \t\t\t             <  -'          :
-                \t\t\t    |  `-, / |         /  /   \t\t\t              `-.__..--'``-,_\\_
-                \t\t\t    |     || |        /  /    \t\t\t                 |o/ ` :,.)_`>
-                \t\t\t     `r-._||/   __   /  /     \t\t\t                 :/ `     ||/)
-                \t\t\t __,-<_     )`-/  `./  /      \t\t\t                 (_.).__,-` |\\
-                \t\t\t'  \\   `---'   \\   /  /     \t\t\t                 /( `.``   `| :
-                \t\t\t    |           |./  /        \t\t\t                 \\'`-.)  `  ; ;
-                \t\t\t    /           //  /         \t\t\t                 | `       /-<
-                \t\t\t\\_/' \\         |/  /        \t\t\t                 |     `  /   `.
-                \t\t\t |    |   _,^-'/  /           \t\t\t ,-_-..____     /|  `    :__..-'\\
-                \t\t\t |    , ``  (\\/  /_          \t\t\t/,'-.__\\\\  ``-./ :`      ;       \\
-                \t\t\t  \\,.->._    \\X-=/^         \t\t\t`\\ `\\  `\\\\  \\ :  (   `  /  ,   `. \\
-                \t\t\t  (  /   `-._//^`             \t\t\t  \\` \\   \\\\   |  | `   :  :     .\\ \\
-                \t\t\t   `Y-.____(__}               \t\t\t   \\ `\\_  ))  :  ;     |  |      ): :        
-                \t\t\t    |     {__)                \t\t\t  (`-.-'\\ ||  |\\ \\   ` ;  ;       | |
-                \t\t\t          ()                  \t\t\t   \\-_   `;;._   ( `  /  /_       | |
-                \t\t\t                              \t\t\t    `-.-.// ,'`-._\\__/_,'         ; |
-                \t\t\t                              \t\t\t       \\:: :     /     `     ,   /  |
-                """;
-        System.out.println(characters);
+            \t\t\t                              \t\t\t                       ,---.
+            \t\t\t                              \t\t\t                       /    |
+            \t\t\t      _,.                     \t\t\t                      /     |
+            \t\t\t    ,` -.)                    \t\t\t                     /      |
+            \t\t\t   ( _/-\\\\-._               \t\t\t                    /       |
+            \t\t\t  /,|`--._,-^|            ,   \t\t\t               ___,'        |
+            \t\t\t  \\_| |`-._/||          ,'|  \t\t\t             <  -'          :
+            \t\t\t    |  `-, / |         /  /   \t\t\t              `-.__..--'``-,_\\_
+            \t\t\t    |     || |        /  /    \t\t\t                 |o/ ` :,.)_`>
+            \t\t\t     `r-._||/   __   /  /     \t\t\t                 :/ `     ||/)
+            \t\t\t __,-<_     )`-/  `./  /      \t\t\t                 (_.).__,-` |\\
+            \t\t\t'  \\   `---'   \\   /  /     \t\t\t                 /( `.``   `| :
+            \t\t\t    |           |./  /        \t\t\t                 \\'`-.)  `  ; ;
+            \t\t\t    /           //  /         \t\t\t                 | `       /-<
+            \t\t\t\\_/' \\         |/  /        \t\t\t                 |     `  /   `.
+            \t\t\t |    |   _,^-'/  /           \t\t\t ,-_-..____     /|  `    :__..-'\\
+            \t\t\t |    , ``  (\\/  /_          \t\t\t/,'-.__\\\\  ``-./ :`      ;       \\
+            \t\t\t  \\,.->._    \\X-=/^         \t\t\t`\\ `\\  `\\\\  \\ :  (   `  /  ,   `. \\
+            \t\t\t  (  /   `-._//^`             \t\t\t  \\` \\   \\\\   |  | `   :  :     .\\ \\
+            \t\t\t   `Y-.____(__}               \t\t\t   \\ `\\_  ))  :  ;     |  |      ): :        
+            \t\t\t    |     {__)                \t\t\t  (`-.-'\\ ||  |\\ \\   ` ;  ;       | |
+            \t\t\t          ()                  \t\t\t   \\-_   `;;._   ( `  /  /_       | |
+            \t\t\t                              \t\t\t    `-.-.// ,'`-._\\__/_,'         ; |
+            \t\t\t                              \t\t\t       \\:: :     /     `     ,   /  |
+            """;
+    System.out.println(characters);
     }
-    private void drawSoldier() {
+    private void drawSoldier () {
         System.out.println("""
-                \t\t\t\t _       _____    ____  ____  ________  ____\s
-                \t\t\t\t| |     / /   |  / __ \\/ __ \\/  _/ __ \\/ __ \\
-                \t\t\t\t| | /| / / /| | / /_/ / /_/ // // / / / /_/ /
-                \t\t\t\t| |/ |/ / ___ |/ _, _/ _, _// // /_/ / _, _/\s
-                \t\t\t\t|__/|__/_/  |_/_/ |_/_/ |_/___/\\____/_/ |_| \s
-                                                            \s
-                \t\t\t\t\t\t  / \\
-                \t\t\t\t\t\t  | |
-                \t\t\t\t\t\t  |.|
-                \t\t\t\t\t\t  |.|
-                \t\t\t\t\t\t   |:|      __
-                \t\t\t\t\t\t,_|:|_,   /  )
-                \t\t\t\t\t\t   (Oo    / _I_
-                \t\t\t\t\t\t   +\\ \\  || __|
-                \t\t\t\t\t\t      \\ \\||___|
-                \t\t\t\t\t\t        \\ /.:.\\-\\
-                \t\t\t\t\t\t         |.:. /-----\\
-                \t\t\t\t\t\t         |___|::oOo::|
-                \t\t\t\t\t\t         /   |:<_T_>:|
-                \t\t\t\t\t\t        |_____\\ ::: /
-                \t\t\t\t\t\t         | |  \\ \\:/
-                \t\t\t\t\t\t         | |   | |
-                \t\t\t\t\t\t         \\ /   | \\___
-                \t\t\t\t\t\t         / |   \\_____\\
-                \t\t\t\t\t\t        `-'
-                """);
-    }
-
-    private void drawWizard() {
-        System.out.println("""
+            \t\t\t\t _       _____    ____  ____  ________  ____\s
+            \t\t\t\t| |     / /   |  / __ \\/ __ \\/  _/ __ \\/ __ \\
+            \t\t\t\t| | /| / / /| | / /_/ / /_/ // // / / / /_/ /
+            \t\t\t\t| |/ |/ / ___ |/ _, _/ _, _// // /_/ / _, _/\s
+            \t\t\t\t|__/|__/_/  |_/_/ |_/_/ |_/___/\\____/_/ |_| \s
+                                                        \s
+            \t\t\t\t\t\t  / \\
+            \t\t\t\t\t\t  | |
+            \t\t\t\t\t\t  |.|
+            \t\t\t\t\t\t  |.|
+            \t\t\t\t\t\t   |:|      __
+            \t\t\t\t\t\t,_|:|_,   /  )
+            \t\t\t\t\t\t   (Oo    / _I_
+            \t\t\t\t\t\t   +\\ \\  || __|
+            \t\t\t\t\t\t      \\ \\||___|
+            \t\t\t\t\t\t        \\ /.:.\\-\\
+            \t\t\t\t\t\t         |.:. /-----\\
+            \t\t\t\t\t\t         |___|::oOo::|
+            \t\t\t\t\t\t         /   |:<_T_>:|
+            \t\t\t\t\t\t        |_____\\ ::: /
+            \t\t\t\t\t\t         | |  \\ \\:/
+            \t\t\t\t\t\t         | |   | |
+            \t\t\t\t\t\t         \\ /   | \\___
+            \t\t\t\t\t\t         / |   \\_____\\
+            \t\t\t\t\t\t        `-'
+            """);
+        }
+        private void drawWizard () {
+            System.out.println("""
                 \t\t\t\t _       ___________   ___    ____  ____\s
                 \t\t\t\t| |     / /  _/__  /  /   |  / __ \\/ __ \\
                 \t\t\t\t| | /| / // /   / /  / /| | / /_/ / / / /
