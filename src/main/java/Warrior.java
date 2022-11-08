@@ -71,27 +71,20 @@ public class Warrior extends Character implements Attacker{
     //Other methods
     @Override
     public void attack(Character defender) {
-        int attackEnergy = 0;
 
         if(stamina>=5){
-            System.out.println("Heavy attack!");
-            attackEnergy=1;
-            //Actualiza stamina
+            System.out.println("Warrior "+getName() +" did a heavy attack!");
             setStamina(stamina-=5);
-            //setting Damage
             defender.setHp(defender.getHp()-strength);
-            System.out.println("Defender hp reduced to "+defender.getHp());
-            System.out.println("Defender Stamina reduced to "+getStamina());
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
         }
         else{
-            System.out.println("Weak attack!");
-            attackEnergy=0;
-            //Actualiza stamina
+            System.out.println("Warrior "+getName() +" did a weak attack!");
             setStamina(stamina+=1);
-            //setting Damage
-            defender.setHp(defender.getHp()- (int) (strength/2));
-            System.out.println("Defender hp reduced to "+defender.getHp());
-            System.out.println("Defender Stamina reduced to "+getStamina());
+            defender.setHp(defender.getHp()- (strength/2));
+            System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
         }
     }
 

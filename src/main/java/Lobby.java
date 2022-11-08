@@ -20,14 +20,16 @@ public class Lobby {
 
         switch (creationMode) {
             case 1:
+                System.out.println("How many characters would you like on your team?");
                 int capacity = teamCapacity(input);
-                presentationMessage("TEAM ONE");
+                presentationMessage("TO YOUR TEAM CUSTOMIZATION");
                 creatingCustomized(teamOne, capacity, input);
-                System.out.println("Team 1 creado! " + teamOne.getTeamCharacters());
+                System.out.println("Your team has been created! " + teamOne.getTeamCharacters());
+                System.out.println("How many characters would you like on the enemy's team?");
                 capacity = teamCapacity(input);
-                presentationMessage("TEAM TWO");
+                presentationMessage("TO ENEMY TEAM CUSTOMIZATION");
                 creatingCustomized(teamTwo, capacity, input);
-                System.out.println("Team 2 creado! "+teamTwo.getTeamCharacters());
+                System.out.println("Enemy team created! "+teamTwo.getTeamCharacters());
                 break;
             case 2:
                 creatingRandom();
@@ -42,7 +44,6 @@ public class Lobby {
 
     public int teamCapacity(Scanner input) {
         String size;
-        System.out.println("How many characters would you like on your team?");
         size = input.nextLine();
         return (Integer.parseInt(size));
     }
