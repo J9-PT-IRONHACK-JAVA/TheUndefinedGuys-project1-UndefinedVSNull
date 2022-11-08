@@ -5,28 +5,35 @@ public class Lobby {
 
     private final Team teamOne = new Team();
     private final Team teamTwo = new Team();
+
+    private final Team[] teams = {teamOne, teamTwo};
     Lobby() {}
 
     public void createLobby(int creationMode, Scanner input) throws InterruptedException, FileNotFoundException {
         int capacity = teamCapacity(input);
         switch (creationMode) {
             case 1:
-                System.out.print(TerminalTools.CLEAR_SCREEN);
-                presentationMessage("T1"); //make it as title
-                creatingCustomized(teamOne, capacity, input);
-                System.out.print(TerminalTools.CLEAR_SCREEN);
-                presentationMessage("T2"); // make it as title
-                creatingCustomized(teamTwo, capacity, input);
+                customizedInput(capacity, input);
                 break;
             case 2:
-                creatingRandom();
-                //teamOne.addCharactersRandom(capacity);
+                randomInput(capacity);
                 break;
             case 3:
                 creatingFomCSV();
                 break;
         }
     }
+
+    //TODO
+    // Code duplicated in switches, needed to be simplified
+    private void customizedInput(int capacity, Scanner input) throws InterruptedException {
+        for (int i = 0; i < teams.length; i++) {
+            System.out.print(TerminalTools.CLEAR_SCREEN);
+            presentationMessage(i + 1); //make it as title
+            creatingCustomized(teams[i], capacity, input);
+        }
+    }
+
     public int teamCapacity(Scanner input) {
         String size;
         System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
@@ -68,15 +75,11 @@ public class Lobby {
         return type;
     }
     private void showCharacters() throws InterruptedException {
-        // Show it like is charging, like old...
         String character = "";
         int i = 1;
-        // Make in the same line
         for (CharacterType charType: CharacterType.values()) {
             character += "\t\t\t[%d] - ".formatted(i);
-            //System.out.printf("[%d] - ", i);
             character += "%s\t\t\t\t".formatted(charType);
-            //Menu.makeItSlow(character);
             i++;
         }
         Menu.makeItSlow(character + "\n", 50);
@@ -106,13 +109,18 @@ public class Lobby {
         return isNum;
     }
 
-    public void creatingRandom() {
-        //TODO
+    public void randomInput(int capacity) throws InterruptedException, FileNotFoundException {
+        for (int i = 0; i < teams.length; i++) {
+            System.out.print(TerminalTools.CLEAR_SCREEN);
+            presentationMessage(i + 1); //make it as title
+            teams[i].addCharactersRandom(capacity);
+            //teams[i].showStats();
+        }
     }
     public void creatingFomCSV() {
         //TODO
     }
-    public void presentationMessage(String str) throws InterruptedException {
+    public void presentationMessage(int team) throws InterruptedException {
         // The character has 21 characters
         String teamOne = ("""
                  _       __________    __________  __  _________     _______________    __  ___   ____  _   ________     _________
@@ -130,10 +138,10 @@ public class Lobby {
                 |__/|__/_____/_____/\\____/\\____/_/  /_/_____/      /_/ /_____/_/  |_/_/  /_/    /_/    |__/|__/\\____/      /_/  /____/\s
                                                                                                                                       \s
                 """);
-        if (str.equals("T1"))
-            Menu.makeItSlow(teamOne, 1);
-        else
-            Menu.makeItSlow(teamTwo, 1);
+        switch (team) {
+            case 1 -> Menu.makeItSlow(teamOne, 1);
+            case 2 -> Menu.makeItSlow(teamTwo, 1);
+        }
     }
 
     private void drawCharacters() {
@@ -162,7 +170,6 @@ public class Lobby {
                 \t\t\t          ()                  \t\t\t   \\-_   `;;._   ( `  /  /_       | |
                 \t\t\t                              \t\t\t    `-.-.// ,'`-._\\__/_,'         ; |
                 \t\t\t                              \t\t\t       \\:: :     /     `     ,   /  |
-                \t\t\t                              \t\t\t        || |    (        ,' /   /   |
                 """;
         System.out.println(characters);
     }
