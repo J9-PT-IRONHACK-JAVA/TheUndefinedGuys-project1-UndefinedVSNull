@@ -90,13 +90,53 @@ public class Warrior extends Character implements Attacker{
 
     @Override
     public String toString() {
-        return "\nWarrior " +
+        //Defining emoticons
+        String gStamina="🍗";
+        String gStrength="💪";
+        String gHp="💖";
+        String gVoid=" ·";
+
+        //Variables
+        String[]arrayGStats={gStamina,gStrength,gHp}; //graphicBar
+        String[] gToString={"","",""}; //Guarda el String 🍗🍗🍗🍗
+        int[] arrayCurrentStats= {stamina,strength,getHp()};
+        int[] arrayMaxStats={STAMINA_MAX,STRENGTH_MAX,HP_WARRIOR_MAX};
+
+        int[] arrayPercentages=new int[arrayGStats.length];
+
+
+        // Creamos un array del número de atributos 3
+        // y grabamos el porcentaje en tanto por 10 de cada uno de ellos
+        for (int i=0;i<arrayPercentages.length;i++){ //Array de 3 atributos
+            arrayPercentages[i]=arrayCurrentStats[i]*10/arrayMaxStats[i];
+        }
+
+        //Rellenando cada barra
+        for (int i=0;i<arrayGStats.length;i++) {//Itera para cada atributo
+            //Rellena la barra con emoticonos
+            for(int j=0; j< arrayPercentages[i];j++){
+                gToString[i]+=arrayGStats[i];
+            }
+            //Rellena la barra con "vacío"
+            for(int j=arrayPercentages[i]; j< 10;j++){
+                gToString[i]+=gVoid;
+            }
+        }
+
+        return "\n🔪 Warrior " +
+
                 getId()+ "  "+
                 getName() +
-                " \thp=" + getHp() +
-                "\tstamina=" + stamina +
-                "\tstrength=" + strength +
-                "\tType=" + getCharacterType() +
-                "\n*************************\n";
+                " \nhp= " + getHp() +
+                " (" + arrayPercentages[2]*10 + "%) |" +gToString[2]+"|"+
+
+                "\t   stamina  "+ stamina +
+                " (" +arrayPercentages[0]*10 +  "%) |" + gToString[0]+"|"+
+
+                "\t   strength=" + strength +
+                " ("+  arrayPercentages[1]*10 + "%) |"+gToString[1]+"|";
+
+
+
     }
 }
