@@ -25,7 +25,7 @@ public class Lobby {
                 customizedInput(capacity, input);
 
 
-    /*          A CONSIDERAR
+      /*       //A CONSIDERAR
                 System.out.println("How many characters would you like on your team?");
                 //int capacity = teamCapacity(input);
                 presentationMessage("TO YOUR TEAM CUSTOMIZATION");
