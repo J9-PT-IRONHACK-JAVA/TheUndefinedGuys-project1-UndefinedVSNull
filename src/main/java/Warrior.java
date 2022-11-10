@@ -48,6 +48,10 @@ public class Warrior extends Character implements Attacker{
             this.stamina = stamina;
         }
     }
+    //new method
+    public void changeStamina(int stamina) {
+        this.stamina+=stamina;
+    }
 
     public void setStrength(int strength) {
         if (strength > STRENGTH_MAX){
@@ -74,14 +78,14 @@ public class Warrior extends Character implements Attacker{
 
         if(stamina>=5){
             System.out.println("Warrior "+getName() +" did a heavy attack!");
-            setStamina(stamina-=5);
+            changeStamina(-5);                        //call to a new method
             defender.setHp(defender.getHp()-strength);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
         }
         else{
             System.out.println("Warrior "+getName() +" did a weak attack!");
-            setStamina(stamina+=1);
+            changeStamina(+1);
             defender.setHp(defender.getHp()- (strength/2));
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");

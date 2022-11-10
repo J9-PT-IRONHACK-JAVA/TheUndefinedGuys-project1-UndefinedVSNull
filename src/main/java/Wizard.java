@@ -64,19 +64,23 @@ public class Wizard extends Character implements Attacker{
 
     //Other methods
 
+    public void changeMana(int mana) {
+        this.mana+=mana;
+    }
+
     @Override
     public void attack(Character defender) {
 
         if(mana>=5){
             System.out.println("Fireball Casted!");
-            setMana(mana-=5);
+            changeMana(-5);
             defender.setHp(defender.getHp()-intelligence);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
         }
         else{
             System.out.println("Staff hit!");
-            setMana(mana+=1);
+            changeMana(+1);
             defender.setHp(defender.getHp()-2);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
