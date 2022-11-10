@@ -1,6 +1,7 @@
 ## MAVEN
-target/
+/target/
 ## INTELLIJ
-.idea/
 ## OS X
 .DS_Store
+/out/
+/.idea/
