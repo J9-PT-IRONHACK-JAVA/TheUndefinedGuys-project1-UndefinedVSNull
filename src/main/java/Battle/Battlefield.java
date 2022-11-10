@@ -1,4 +1,7 @@
+package Battle;
+
 import Characters.Character;
+import Menu.Lobby;
 
 import java.util.Scanner;
 
@@ -31,7 +34,7 @@ public class Battlefield {
 
 
             for(int i= 0 ; i< lobby.getTeamOne().getTeamCharacters().size(); i++){
-                System.out.println("It's Team one's turn! Player "+ (i+1)+" "+lobby.getTeamOne().getTeamCharacters().get(i).getName()+" attacking first!");
+                System.out.println("It's Battle.Team one's turn! Player "+ (i+1)+" "+lobby.getTeamOne().getTeamCharacters().get(i).getName()+" attacking first!");
                 System.out.println("Which character is "+lobby.getTeamOne().getTeamCharacters().get(i).getName()+" going to attack? Choose number:");
                 for (int j = 0; j < lobby.getTeamOne().getTeamCharacters().size(); j++) {
                     System.out.println(lobby.getTeamOne().getTeamCharacters().get(j).toString());

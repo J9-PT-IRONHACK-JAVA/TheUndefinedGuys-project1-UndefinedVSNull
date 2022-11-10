@@ -1,6 +1,9 @@
+package Battle;
+
 import Characters.Character;
 import Characters.Warrior;
 import Characters.Wizard;
+import Tools.TerminalTools;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

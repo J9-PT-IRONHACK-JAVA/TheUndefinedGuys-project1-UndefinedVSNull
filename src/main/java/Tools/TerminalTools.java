@@ -1,3 +1,5 @@
+package Tools;
+
 public class TerminalTools {
     // great documentation
     //https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html

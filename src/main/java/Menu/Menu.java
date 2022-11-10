@@ -1,8 +1,12 @@
+package Menu;
+
+import Battle.Battlefield;
+import Tools.TerminalTools;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Menu {
-    Lobby lobby = new Lobby();
 
     public void main() throws InterruptedException, FileNotFoundException {
 
@@ -13,13 +17,14 @@ public class Menu {
         System.out.println(TerminalTools.ANSI_RED + printTitle());
         System.out.println(TerminalTools.ANSI_RESET + linesSeparationMessage());
         makeItSlow(menuMessage(), 5);
-        //System.out.print(TerminalTools.CURSOR_MIDDLE);
+        //System.out.print(Tools.TerminalTools.CURSOR_MIDDLE);
         String gameModeInput = input.nextLine();
         gameMode(Integer.parseInt(gameModeInput));
         System.out.print(TerminalTools.CLEAR_SCREEN);
         System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
         makeItSlow(teamCreationModeMessage(), 5);
         String creationModeInput = input.nextLine();
+        Lobby lobby = new Lobby();
         lobby.createLobby(Integer.parseInt(creationModeInput), input);
         Battlefield battlefield = new Battlefield(lobby);
         battlefield.battle();
