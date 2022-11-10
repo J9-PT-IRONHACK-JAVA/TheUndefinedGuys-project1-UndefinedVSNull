@@ -1,3 +1,7 @@
+import Characters.Character;
+import Characters.Warrior;
+import Characters.Wizard;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +34,12 @@ public class Team {
             Warrior war = new Warrior(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             checkAvailabilityName(war);
             teamCharacters.add(war);
-            System.out.println("New Warrior added!");
+            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\t\tWARRIOR ADDED!" + TerminalTools.ANSI_RESET);
         } else if (charStats[0].equals("2")) {
             Wizard wiz = new Wizard(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             checkAvailabilityName(wiz);
             this.teamCharacters.add(wiz);
-            System.out.println("New Wizard added!");
+            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
         }
     }
 
@@ -54,7 +58,7 @@ public class Team {
            
             Random value = new Random();
             int numberOfTypes=2;            //for easy scaling
-            int randomCharacter;            //type of Character
+            int randomCharacter;            //type of characters.Character
 
             for (int i = 0; i < capacity; i++) {
                 randomCharacter=value.nextInt(0, numberOfTypes);    //random from 0 to 1
@@ -77,11 +81,11 @@ public class Team {
 //        //team = determineCharType(capacity);
 //        for (int i = 0; i < team.length; i++) {
 //            if(team[i] == 1){
-//                Warrior war = new Warrior();
+//                characters.Warrior war = new characters.Warrior();
 //                teamCharacters.add(war);
 //            }
 //            else if(team[i] == 2){
-//                Wizard wiz = new Wizard();
+//                characters.Wizard wiz = new characters.Wizard();
 //                this.teamCharacters.add(wiz);
 //            }
 //        }

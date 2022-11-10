@@ -1,3 +1,4 @@
+package Characters;
 import net.datafaker.Faker;
 import java.util.Arrays;
 import java.util.Random;
@@ -77,7 +78,7 @@ public abstract class Character implements Attacker{
 
     @Override
     public String toString() {
-        return "Character{" +
+        return "characters.Character{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", hp=" + hp +
@@ -93,6 +94,7 @@ public abstract class Character implements Attacker{
         Random value= new Random();
         return value.nextInt(valueMin, valueMax+1);
     }
+
     String randomNames() {
 
         Faker faker = new Faker();
@@ -105,6 +107,7 @@ public abstract class Character implements Attacker{
         }
         return "";
     }
+
 }
 
 
