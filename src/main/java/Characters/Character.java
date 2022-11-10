@@ -1,4 +1,5 @@
 package Characters;
+
 import net.datafaker.Faker;
 import java.util.Arrays;
 import java.util.Random;

@@ -1,3 +1,5 @@
+import Menu.Menu;
+
 import java.io.FileNotFoundException;
 
 public class Main {
