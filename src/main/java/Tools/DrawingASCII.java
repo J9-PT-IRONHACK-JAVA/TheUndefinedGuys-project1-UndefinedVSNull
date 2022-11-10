@@ -3,6 +3,16 @@ package Tools;
 import Menu.Menu;
 
 public class DrawingASCII {
+    public static String printTitle() {
+        return """
+                  ________            __  __          __     _____                __   ______               ______                  \s
+                 /_  __/ /_  ___     / / / /___  ____/ /__  / __(_)___  ___  ____/ /  / ____/_  ____  __   / ____/___ _____ ___  ___\s
+                  / / / __ \\/ _ \\   / / / / __ \\/ __  / _ \\/ /_/ / __ \\/ _ \\/ __  /  / / __/ / / / / / /  / / __/ __ `/ __ `__ \\/ _ \\
+                 / / / / / /  __/  / /_/ / / / / /_/ /  __/ __/ / / / /  __/ /_/ /  / /_/ / /_/ / /_/ /  / /_/ / /_/ / / / / / /  __/
+                /_/ /_/ /_/\\___/   \\____/_/ /_/\\__,_/\\___/_/ /_/_/ /_/\\___/\\__,_/   \\____/\\__,_/\\__, /   \\____/\\__,_/_/ /_/ /_/\\___/\s
+                                                                                               /____/                               \s
+                """;
+    }
     public static void presentationMessage(int team) throws InterruptedException {
         // The character has 21 characters
         String teamOne = ("""
@@ -112,5 +122,10 @@ public class DrawingASCII {
                 
                 
                 """);
+    }
+    public static String linesSeparationMessage() {
+        return """
+                ======================================================================================================================
+                """;
     }
 }

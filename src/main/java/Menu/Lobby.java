@@ -21,8 +21,7 @@ public class Lobby {
     public Team getTeamTwo() {
         return teamTwo;
     }
-    Lobby() {
-    }
+    Lobby() {}
 
     public void createLobby(int creationMode, Scanner input) throws InterruptedException, FileNotFoundException {
         int capacity = teamCapacity(input);
@@ -109,15 +108,15 @@ public class Lobby {
     }
 
     private String AssignValueAndShowDialogueWithIntegers(String dialogue, Scanner input) {
-        boolean comparision;
+        boolean comparison;
         String value;
         do {
             System.out.println("\t\t\t\t\t" + dialogue);
             value = input.nextLine();
-            comparision = isNumber(value);
-            if (!comparision)
+            comparison = isNumber(value);
+            if (!comparison)
                 System.out.println(TerminalTools.ANSI_RED + "\t\t\t\tYou entered an invalid number. Try again" + TerminalTools.ANSI_RESET);
-        } while (!comparision);
+        } while (!comparison);
         return value;
     }
 

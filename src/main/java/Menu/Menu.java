@@ -1,6 +1,7 @@
 package Menu;
 
 import Battle.Battlefield;
+import Tools.DrawingASCII;
 import Tools.TerminalTools;
 
 import java.io.FileNotFoundException;
@@ -9,29 +10,35 @@ import java.util.Scanner;
 public class Menu {
 
     public void main() throws InterruptedException, FileNotFoundException {
-
         Scanner input = new Scanner(System.in);
-
-        System.out.print(TerminalTools.CLEAR_SCREEN);
-
-        System.out.println(TerminalTools.ANSI_RED + printTitle());
-        System.out.println(TerminalTools.ANSI_RESET + linesSeparationMessage());
-        makeItSlow(menuMessage(), 5);
+        beginningGameScreen(input);
         //System.out.print(Tools.TerminalTools.CURSOR_MIDDLE);
+
+        String creationModeInput = teamCreationScreen(input);
+        Lobby lobby = new Lobby();
+        lobby.createLobby(Integer.parseInt(creationModeInput), input);
+
+        Battlefield battlefield = new Battlefield(lobby);
+        battlefield.battle();
+
+        input.close();
+    }
+    private void beginningGameScreen(Scanner input) throws InterruptedException {
+        System.out.print(TerminalTools.CLEAR_SCREEN);
+        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle());
+        System.out.println(TerminalTools.ANSI_RESET + DrawingASCII.linesSeparationMessage());
+        makeItSlow(menuMessage(), 5);
         String gameModeInput = input.nextLine();
         gameMode(Integer.parseInt(gameModeInput));
         System.out.print(TerminalTools.CLEAR_SCREEN);
-        System.out.println(TerminalTools.ANSI_RED + printTitle() + TerminalTools.ANSI_RESET);
+    }
+    private String teamCreationScreen(Scanner input) throws InterruptedException {
+        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle() + TerminalTools.ANSI_RESET);
         makeItSlow(teamCreationModeMessage(), 5);
-        String creationModeInput = input.nextLine();
-        Lobby lobby = new Lobby();
-        lobby.createLobby(Integer.parseInt(creationModeInput), input);
-        Battlefield battlefield = new Battlefield(lobby);
-        battlefield.battle();
-        input.close();
+        return input.nextLine();
     }
 
-    private void  gameMode(int n) {
+    private void gameMode(int n) {
         // Que pasa si es de algun tipo de modo de juego?
         switch (n) {
             case 1:
@@ -45,21 +52,6 @@ public class Menu {
                 break;
         }
 
-    }
-    private String printTitle() {
-        return """
-                  ________            __  __          __     _____                __   ______               ______                  \s
-                 /_  __/ /_  ___     / / / /___  ____/ /__  / __(_)___  ___  ____/ /  / ____/_  ____  __   / ____/___ _____ ___  ___\s
-                  / / / __ \\/ _ \\   / / / / __ \\/ __  / _ \\/ /_/ / __ \\/ _ \\/ __  /  / / __/ / / / / / /  / / __/ __ `/ __ `__ \\/ _ \\
-                 / / / / / /  __/  / /_/ / / / / /_/ /  __/ __/ / / / /  __/ /_/ /  / /_/ / /_/ / /_/ /  / /_/ / /_/ / / / / / /  __/
-                /_/ /_/ /_/\\___/   \\____/_/ /_/\\__,_/\\___/_/ /_/_/ /_/\\___/\\__,_/   \\____/\\__,_/\\__, /   \\____/\\__,_/_/ /_/ /_/\\___/\s
-                                                                                               /____/                               \s
-                """;
-    }
-    private String linesSeparationMessage() {
-        return """
-                ======================================================================================================================
-                """;
     }
     private String menuMessage() {
         return """
