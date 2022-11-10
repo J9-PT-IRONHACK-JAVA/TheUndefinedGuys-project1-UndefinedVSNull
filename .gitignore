@@ -1,0 +1,6 @@
+## MAVEN
+target/
+## INTELLIJ
+.idea/
+## OS X
+.DS_Store

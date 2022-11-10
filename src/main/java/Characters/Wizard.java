@@ -1,3 +1,5 @@
+package Characters;
+
 import java.io.FileNotFoundException;
 
 public class Wizard extends Character implements Attacker{
@@ -72,20 +74,20 @@ public class Wizard extends Character implements Attacker{
             setMana(mana-=5);
             defender.setHp(defender.getHp()-intelligence);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
+            System.out.println("characters.Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
         }
         else{
             System.out.println("Staff hit!");
             setMana(mana+=1);
             defender.setHp(defender.getHp()-2);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
+            System.out.println("characters.Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
         }
 
     }
     @Override
     public String toString() {
-        return "\nWizard " +
+        return "\ncharacters.Wizard " +
                 getId() + " "+
                 getName()+
                 "\thp=" + getHp()+

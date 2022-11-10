@@ -1,3 +1,5 @@
+import Characters.Character;
+
 import java.util.Scanner;
 
 

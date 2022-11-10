@@ -7,4 +7,6 @@ public class TerminalTools {
 
     public static final String CLEAR_SCREEN = "\033[H\033[2J";
     public static final String CURSOR_MIDDLE = "\033[2;5H";
+
+    public static final String ANSI_GREEN = "\u001b[32m";
 }

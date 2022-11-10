@@ -1,3 +1,5 @@
+import Characters.CharacterType;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -21,22 +23,7 @@ public class Lobby {
         int capacity = teamCapacity(input);
         switch (creationMode) {
             case 1:
-
                 customizedInput(capacity, input);
-
-
-    /*          A CONSIDERAR
-                System.out.println("How many characters would you like on your team?");
-                //int capacity = teamCapacity(input);
-                presentationMessage("TO YOUR TEAM CUSTOMIZATION");
-                creatingCustomized(teamOne, capacity, input);
-                System.out.println("Your team has been created! " + teamOne.getTeamCharacters());
-                System.out.println("How many characters would you like on the enemy's team?");
-                //capacity = teamCapacity(input);
-                presentationMessage("TO ENEMY TEAM CUSTOMIZATION");
-                creatingCustomized(teamTwo, capacity, input);
-                System.out.println("Enemy team created! "+teamTwo.getTeamCharacters());
-*/
                 break;
             case 2:
                 randomInput(capacity);
@@ -56,9 +43,12 @@ public class Lobby {
             creatingCustomized(teams[i], capacity, input);
         }
     }
-
+    //TODO
+    // mirar HOW WOULD YOU LIKE TO CREATE 2 SCREEN
+    //System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
     public int teamCapacity(Scanner input) {
         String size;
+        System.out.println("\t\t\t\t\t    How many characters would you like for both teams?");
         size = input.nextLine();
         return (Integer.parseInt(size));
     }
@@ -69,12 +59,14 @@ public class Lobby {
         for (int i = 0; i < size; i++) {
             charStats[0] = assignTypeOfCharacter(input);
 
-            System.out.println("Enter the name:");
+            System.out.println("\t\t\t\t\tEnter the name:");
             charStats[1] = input.nextLine();
-            charStats[2] = AssignValueAndShowDialogueWithIntegers("Enter the health", input);
-            charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy", input);
-            charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power", input);
+            charStats[2] = AssignValueAndShowDialogueWithIntegers("Enter the health:", input);
+            charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy:", input);
+            charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power:", input);
             team.addCharactersCustom(charStats);
+            Thread.sleep(3000);
+            System.out.print(TerminalTools.CLEAR_SCREEN);
         }
     }
 
@@ -89,7 +81,7 @@ public class Lobby {
             type = input.nextLine();
             comparision = Integer.parseInt(type) < 0 || Integer.parseInt(type) > 2;
             if (comparision)
-                System.out.println("You entered an invalid number. Try again");
+                System.out.println(TerminalTools.ANSI_RED + "\t\t\t\t\tYou entered an invalid number. Try again" + TerminalTools.ANSI_RESET);
         } while (comparision);
         System.out.print(TerminalTools.CLEAR_SCREEN);
         switch (type) {
@@ -115,11 +107,11 @@ public class Lobby {
         boolean comparision;
         String value;
         do {
-            System.out.println(dialogue);
+            System.out.println("\t\t\t\t\t" + dialogue);
             value = input.nextLine();
             comparision = isNumber(value);
             if (!comparision)
-                System.out.println("You have entered an invalid number. Try again");
+                System.out.println(TerminalTools.ANSI_RED + "\t\t\t\tYou entered an invalid number. Try again" + TerminalTools.ANSI_RESET);
         } while (!comparision);
         return value;
     }
@@ -226,6 +218,8 @@ public class Lobby {
             \t\t\t\t\t\t         \\ /   | \\___
             \t\t\t\t\t\t         / |   \\_____\\
             \t\t\t\t\t\t        `-'
+            
+            
             """);
         }
         private void drawWizard () {
@@ -251,7 +245,9 @@ public class Lobby {
                 \t\t\t\t\t  |    |  I   _________
                 \t\t\t\t\t  |    |  I c(`       ')o
                 \t\t\t\t\t  |    l  I   \\.     ,/
-                \t\t\t\t\t_/j  L l\\_!  _//^---^\\\\_    -Row
+                \t\t\t\t\t_/j  L l\\_!  _//^---^\\\\_    
+                
+                
                 """);
     }
 }

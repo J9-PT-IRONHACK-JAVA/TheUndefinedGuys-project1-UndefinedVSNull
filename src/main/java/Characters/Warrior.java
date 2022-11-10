@@ -1,3 +1,5 @@
+package Characters;
+
 import java.io.FileNotFoundException;
 
 public class Warrior extends Character implements Attacker{
@@ -73,24 +75,24 @@ public class Warrior extends Character implements Attacker{
     public void attack(Character defender) {
 
         if(stamina>=5){
-            System.out.println("Warrior "+getName() +" did a heavy attack!");
+            System.out.println("characters.Warrior "+getName() +" did a heavy attack!");
             setStamina(stamina-=5);
             defender.setHp(defender.getHp()-strength);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
+            System.out.println("characters.Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
         }
         else{
-            System.out.println("Warrior "+getName() +" did a weak attack!");
+            System.out.println("characters.Warrior "+getName() +" did a weak attack!");
             setStamina(stamina+=1);
             defender.setHp(defender.getHp()- (strength/2));
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
+            System.out.println("characters.Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
         }
     }
 
     @Override
     public String toString() {
-        return "\nWarrior " +
+        return "\ncharacters.Warrior " +
                 getId()+ "  "+
                 getName() +
                 " \thp=" + getHp() +
