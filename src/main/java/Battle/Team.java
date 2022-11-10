@@ -64,7 +64,7 @@ public class Team {
             int randomCharacter;            //type of characters.Character
 
             for (int i = 0; i < capacity; i++) {
-                randomCharacter=value.nextInt(0, numberOfTypes);    //random from 0 to 1
+                randomCharacter = value.nextInt(0, numberOfTypes);    //random from 0 to 1
                 switch (randomCharacter){
                     case 0: {
                         Warrior war = new Warrior();
@@ -96,16 +96,12 @@ public class Team {
     
 
     public boolean checkAllDead(){
-
-        boolean allDead = true;
         for(Character c: getTeamCharacters()){
             if(c.isAlive()){
-                allDead=false;
-                break;
+                return false;
             }
         }
-        return allDead;
+        return true;
     }
-
 }
 

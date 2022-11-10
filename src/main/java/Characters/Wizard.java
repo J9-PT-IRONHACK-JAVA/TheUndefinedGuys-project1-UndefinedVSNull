@@ -66,19 +66,23 @@ public class Wizard extends Character implements Attacker{
 
     //Other methods
 
+    public void changeMana(int mana) {
+        this.mana+=mana;
+    }
+
     @Override
     public void attack(Character defender) {
 
         if(mana>=5){
             System.out.println("Fireball Casted!");
-            setMana(mana-=5);
+            changeMana(-5);
             defender.setHp(defender.getHp()-intelligence);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("characters.Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
         }
         else{
             System.out.println("Staff hit!");
-            setMana(mana+=1);
+            changeMana(+1);
             defender.setHp(defender.getHp()-2);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
             System.out.println("characters.Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
@@ -87,14 +91,53 @@ public class Wizard extends Character implements Attacker{
     }
     @Override
     public String toString() {
-        return "\ncharacters.Wizard " +
-                getId() + " "+
-                getName()+
-                "\thp=" + getHp()+
-                "\tmana=" + mana +
-                "\tintelligence=" + intelligence +
-                "\tType= "+getCharacterType()+
-                "\n*************************\n";
+
+        //Defining emoticons
+        String gMana="🔋";
+        String gIntelligence="📜";
+        String gHp="💖";
+        String gVoid=" ·";
+
+        //Variables
+        String[]arrayGStats={gMana,gIntelligence,gHp}; //graphicBar
+        String[] gToString={"","",""}; //Guarda el String 🍗🍗🍗🍗
+        int[] arrayCurrentStats= {mana,intelligence,getHp()};
+        int[] arrayMaxStats={MANA_MAX,INTELLIGENCE_MAX,HP_WIZARD_MAX};
+
+        int[] arrayPercentages=new int[arrayGStats.length];
+
+
+        // Creamos un array del número de atributos 3
+        // y grabamos el porcentaje en tanto por 10 de cada uno de ellos
+        for (int i=0;i<arrayPercentages.length;i++){ //Array de 3 atributos
+            arrayPercentages[i]=arrayCurrentStats[i]*10/arrayMaxStats[i];
+        }
+
+        //Rellenando cada barra
+        for (int i=0;i<arrayGStats.length;i++) {//Itera para cada atributo
+            //Rellena la barra con emoticonos
+            for(int j=0; j< arrayPercentages[i];j++){
+                gToString[i]+=arrayGStats[i];
+            }
+            //Rellena la barra con "vacío"
+            for(int j=arrayPercentages[i]; j< 10;j++){
+                gToString[i]+=gVoid;
+            }
+        }
+
+        return "\n🧪 Wizard  " +
+
+                getId()+ "  "+
+                getName() +
+                " \nhp= " + getHp() +
+                " (" + arrayPercentages[2]*10 + "%) |" +gToString[2]+"|"+
+
+                "\t   mana  "+ mana +
+                " (" +arrayPercentages[0]*10 +  "%) |" + gToString[0]+"|"+
+
+                "\t   intelligence=" + intelligence +
+                " ("+  arrayPercentages[1]*10 + "%) |"+gToString[1]+"|";
+
     }
 
 }
