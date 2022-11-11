@@ -41,8 +41,7 @@ public class Battlefield {
         System.out.println("Team 2");
         System.out.println(lobby.getTeamTwo().getTeamCharacters());
 
-
-        while(checkTeamOneAlive()==true && checkTeamTwoAlive()==true){  //Duel team1 vs team2
+        while(checkTeamOneAlive() && checkTeamTwoAlive()){  //Duel team1 vs team2
             System.out.println("entro en el while!");
 
             if(menu_one_input.equals("1")){
@@ -54,7 +53,6 @@ public class Battlefield {
 
             }else if(menu_one_input.equals("3")){
                 noPlayerBattle();
-
             }
         }
 
@@ -72,10 +70,7 @@ public class Battlefield {
     }
 
 
-
-
     public void onePlayerBattle (int userChoice,Character defender,Character attacker,ArrayList<Character> graveyard){
-
 
         for(int i= 0 ; i< lobby.getTeamOne().getTeamCharacters().size(); i++){       //1player mode
 
@@ -200,8 +195,6 @@ public class Battlefield {
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
-
-
             }        //team 1 choice 1v1
 
 
