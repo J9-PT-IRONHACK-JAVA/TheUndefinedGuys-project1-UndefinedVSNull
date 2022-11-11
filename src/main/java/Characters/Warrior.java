@@ -83,14 +83,14 @@ public class Warrior extends Character implements Attacker{
             changeStamina(-5);                        //call to a new method
             defender.setHp(defender.getHp()-strength);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("characters.Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina()+" \n");
         }
         else{
             System.out.println("Warrior "+getName() +" did a weak attack!");
             changeStamina(+1);
             defender.setHp(defender.getHp()- (strength/2));
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("characters.Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
+            System.out.println("Warrior "+getName() +" stamina reduced to "+getStamina() +" \n");
         }
     }
 

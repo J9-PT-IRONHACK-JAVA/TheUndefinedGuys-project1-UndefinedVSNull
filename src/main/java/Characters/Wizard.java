@@ -78,14 +78,14 @@ public class Wizard extends Character implements Attacker{
             changeMana(-5);
             defender.setHp(defender.getHp()-intelligence);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("characters.Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
+            System.out.println("Wizard "+getName()+" stamina decreased to "+getMana()+" \n");
         }
         else{
             System.out.println("Staff hit!");
             changeMana(+1);
             defender.setHp(defender.getHp()-2);
             System.out.println(defender.getName()+"'s health decreased to "+defender.getHp());
-            System.out.println("characters.Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
+            System.out.println("Wizard "+getName() +" stamina reduced to "+getMana() +" \n");
         }
 
     }
