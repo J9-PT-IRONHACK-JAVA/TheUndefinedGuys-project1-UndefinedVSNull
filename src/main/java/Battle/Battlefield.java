@@ -2,6 +2,9 @@ package Battle;
 
 import Characters.Character;
 import Menu.Lobby;
+import Menu.Menu;
+import Tools.DrawingASCII;
+import Tools.TerminalTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,29 +30,34 @@ public class Battlefield {
         this.lobby = lobby;
     }
 
-    public void battle(String menu_one_input){
+    public void battle(String menu_one_input) throws InterruptedException {
 
         int userChoice = 0;
         Character defender = null;
         Character attacker = null;
         ArrayList<Character> graveyard = new ArrayList<>();
 
-        System.out.println("entro en la battle!!");
+        //System.out.println("entro en la battle!!");
+        Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),0);
 
-        System.out.println("Team 1");
+        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.team1Title());                              // Team 1 title
         System.out.println(lobby.getTeamOne().getTeamCharacters());
 
-        System.out.println("Team 2");
+        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.team2Title());                              // Team 2 title
         System.out.println(lobby.getTeamTwo().getTeamCharacters());
+        System.out.println(TerminalTools.ANSI_RESET);
+
+        Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),5);
+
 
         while(checkTeamOneAlive() && checkTeamTwoAlive()){  //Duel team1 vs team2
-            System.out.println("entro en el while!");
+            //System.out.println("entro en el while!");
 
             if(menu_one_input.equals("1")){
                 onePlayerBattle(userChoice,defender,attacker,graveyard);
 
             } else if (menu_one_input.equals("2")) {
-                System.out.println("entro en el if!");
+                //System.out.println("entro en el if!");
                 twoPlayerBattle(userChoice,defender,attacker,graveyard);
 
             }else if(menu_one_input.equals("3")){
@@ -109,8 +117,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamOne().getTeamCharacters().get(i).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamTwo().getTeamCharacters().get(userChoice-1));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
@@ -126,8 +134,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamTwo().getTeamCharacters().get(userChoice-1).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamOne().getTeamCharacters().get(i));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
@@ -174,8 +182,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamOne().getTeamCharacters().get(i).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamTwo().getTeamCharacters().get(userChoice-1));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
@@ -191,8 +199,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamTwo().getTeamCharacters().get(userChoice-1).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamOne().getTeamCharacters().get(i));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
@@ -233,8 +241,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamTwo().getTeamCharacters().get(i).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamOne().getTeamCharacters().get(userChoice-1));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
@@ -250,8 +258,8 @@ public class Battlefield {
                     System.out.println("Player "+lobby.getTeamOne().getTeamCharacters().get(userChoice-1).getName()+ " wins the duel!");
                     System.out.println("////////////////////////////////// \n");
                     graveyard.add(getLobby().getTeamTwo().getTeamCharacters().get(i));
-                    System.out.println("+ + + + Graveyard + + + +\n");
-                    System.out.println(graveyard.toString());
+                    System.out.println(DrawingASCII.graveYardTitle());
+                    System.out.println(graveyard);
                     System.out.println("+ + + + + + + + + + + + +\n");
                     break;
                 }
