@@ -67,10 +67,12 @@ public class Team {
                         Warrior war = new Warrior();
                         checkAvailabilityName(war);
                         teamCharacters.add(war);
+                        break;
                         } case 1: {
                         Wizard wiz = new Wizard();
                         checkAvailabilityName(wiz);
                         teamCharacters.add(wiz);
+                        break;
                         }
             }
         }
