@@ -8,6 +8,7 @@ import Tools.DrawingASCII;
 import Tools.TerminalTools;
 import Battle.Team;
 
+import com.github.javafaker.shaded.snakeyaml.tokens.DocumentEndToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Lobby {
@@ -33,11 +35,17 @@ public class Lobby {
     Lobby() {}
 
     public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
-        int capacity = teamCapacity(input);
+
+        int capacity = 0;
+        if (menu_one_input.equals("3"))
+            creationMode += 1;
+        if (creationMode != 3)
+            capacity = teamCapacity(input);
         switch (creationMode) {
-            case 1 -> customizedInput(capacity, input);   //Custom stats
-            case 2 -> randomizedInput(capacity, input);          //Random stats
-                //case 3 -> creatingFomCSV();               //CSV stats
+            case 1 -> customizedInput(menu_one_input, capacity, input);
+            case 2 -> randomizedInput(capacity, input);
+            case 3 -> creatingFomCSV();
+
         }
         exportToCSV(teams);
     }
@@ -45,7 +53,7 @@ public class Lobby {
 
     //TODO
     // mirar HOW WOULD YOU LIKE TO CREATE 2 SCREEN
-    //System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
+
     public int teamCapacity(Scanner input) {
         String size;
         System.out.println("\t\t\t\t\t    How many characters would you like for both teams?");
@@ -65,7 +73,6 @@ public class Lobby {
             charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy:", input);
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power:", input);
             team.addCharactersCustom(charStats);
-
             enterToContinue(input);
         }
     }
@@ -132,31 +139,38 @@ public class Lobby {
         System.out.print(TerminalTools.CLEAR_SCREEN);
     }
 
-    //TODO
-    // Code duplicated in switches, needed to be simplified
+    private void customizedInput(String menu_one_input, int capacity, Scanner input) throws InterruptedException, FileNotFoundException {
+        int players = Integer.parseInt(menu_one_input);
 
-    private void customizedInput(int capacity, Scanner input) throws InterruptedException {
-        for (int i = 0; i < teams.length; i++) {
+        for (int i = 0; i < players; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1); //make it as title
             creatingCustomized(teams[i], capacity, input);
         }
+        if (players == 1)
+            teamTwo.addCharactersRandom(capacity);
     }
     public void randomizedInput(int capacity, Scanner input) throws InterruptedException, IOException {
         for (int i = 0; i < teams.length; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1);
             teams[i].addCharactersRandom(capacity);
-            //TODO
-            // MAKE IT PRETTIER
-            System.out.println(teams[i].getTeamCharacters());
+            showStats(teams[i]);
+            //System.out.println(teams[i].getTeamCharacters());
             enterToContinue(input);
         }
         exportToCSV(teams);
     }
 
+    private void showStats(Team team) {
+        int sizeTeam = team.getTeamCharacters().size();
+        for (int i = 0; i < sizeTeam; i++) {
+            System.out.printf("\n%s\n", team.getTeamCharacters().get(i));
+        }
+    }
+
     private void exportToCSV(Team[] teams) throws IOException {
-        FileWriter writer = new FileWriter("./tesExporting.csv");
+        FileWriter writer = new FileWriter("./database.csv");
         writer.write("Team, Type, Name, Health, Energy, Power\n");
         for (int iterTeam = 0; iterTeam < teams.length; iterTeam++) {
             for (int iterChar = 0; iterChar < teams[iterTeam].getTeamCharacters().size(); iterChar++) {
@@ -184,15 +198,35 @@ public class Lobby {
         }
     }
 
-    public void creatingFomCSV(Team[] team) {
-        /*
-        //var gson = new GsonBuilder().setPrettyPrinting().create();
-        for (Team team : teams) {
-            //String teamToJson = gson.toJson(team);
-            //writer.write(teamToJson);
-            writer.close();
+    public void creatingFomCSV() throws FileNotFoundException {
+        File targetFile = new File("./database.csv");
+        Scanner details = new Scanner(targetFile);
+
+        String detailsTeam;
+        String[] charStats;
+        while (details.hasNext()) {
+            detailsTeam = details.nextLine();
+
+            String[] charStatsCSV = detailsTeam.split(",");
+            charStats =  new String[] {
+                    determineChar(charStatsCSV[1]), charStatsCSV[2], charStatsCSV[3], charStatsCSV[4], charStatsCSV[5]};
+            if (charStatsCSV[0].equals("0")) {
+                teamOne.addCharactersCustom(charStats);
+            }
+            else if (charStatsCSV[0].equals("1")) {
+                teamTwo.addCharactersCustom(charStats);
+            }
+            System.out.print(TerminalTools.CLEAR_SCREEN);
         }
-         */
-        //TODO
+        details.close();
     }
+    private String determineChar(String s) {
+        String characterType = "";
+        if (s.equals("a"))
+            characterType = "1";
+        else if (s.equals("i"))
+            characterType = "2";
+        return characterType;
+    }
+
 }
