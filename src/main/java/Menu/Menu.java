@@ -5,16 +5,19 @@ import Tools.DrawingASCII;
 import Tools.TerminalTools;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
 
-    public void main() throws InterruptedException, FileNotFoundException {
+    public void main() throws InterruptedException, IOException {
         Scanner input = new Scanner(System.in);
         beginningGameScreen(input);
         System.out.print(Tools.TerminalTools.CURSOR_MIDDLE);
 
         String creationModeInput = teamCreationScreen(input);
+
+
         Lobby lobby = new Lobby();
         lobby.createLobby(Integer.parseInt(creationModeInput), input);
 

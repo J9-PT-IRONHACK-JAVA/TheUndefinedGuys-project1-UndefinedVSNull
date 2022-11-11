@@ -44,18 +44,15 @@ public class Team {
             this.teamCharacters.add(wiz);
             System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
         }
+
+
     }
-
-
-
         public void checkAvailabilityName(Character someOne ){
             for (Character character: teamCharacters) {
                 if(character.getName().equals(someOne.getName()))
                     character.setName(character.getName()+" Jr");
             }   
     }
-        
-
         //Add Characters - Random Mode
         public void addCharactersRandom(int capacity) throws FileNotFoundException {
            
