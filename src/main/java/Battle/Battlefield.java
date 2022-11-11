@@ -275,6 +275,11 @@ public class Battlefield {
             int defenderChoice = 0;
             Character defenderChoiceCharacter = null;
 
+            if (!checkTeamOneAlive() || !checkTeamTwoAlive()){
+                break;
+            }
+
+
             do{
                 attackerChoice = random(0,lobby.getTeamTwo().getTeamCharacters().size());
                 attackerChoiceCharacter = lobby.getTeamOne().getTeamCharacters().get(attackerChoice);
@@ -336,7 +341,7 @@ public class Battlefield {
 
     public int random(int valueMin, int valueMax){
         Random value= new Random();
-        return value.nextInt(valueMin, valueMax-1);
+        return value.nextInt(valueMin, valueMax);
     }
 }
 
