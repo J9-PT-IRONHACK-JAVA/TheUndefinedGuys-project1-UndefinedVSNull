@@ -23,30 +23,18 @@ public class Lobby {
     }
     Lobby() {}
 
-    public void createLobby(int creationMode, Scanner input) throws InterruptedException, FileNotFoundException {
+    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, FileNotFoundException {
         int capacity = teamCapacity(input);
-        switch (creationMode) {
-            case 1:
-                customizedInput(capacity, input);
-                break;
-            case 2:
-                randomInput(capacity);
-                break;
-            case 3:
-                creatingFomCSV();
-                break;
+        if(menu_one_input.equals("1")){
+            switch (creationMode) {
+                case 1 -> customizedInput(capacity, input);   //Custom stats
+                case 2 -> randomizedInput(capacity);          //Random stats
+                case 3 -> creatingFomCSV();               //CSV stats
+            }
         }
     }
 
-    //TODO
-    // Code duplicated in switches, needed to be simplified
-    private void customizedInput(int capacity, Scanner input) throws InterruptedException {
-        for (int i = 0; i < teams.length; i++) {
-            System.out.print(TerminalTools.CLEAR_SCREEN);
-            DrawingASCII.presentationMessage(i + 1); //make it as title
-            creatingCustomized(teams[i], capacity, input);
-        }
-    }
+
     //TODO
     // mirar HOW WOULD YOU LIKE TO CREATE 2 SCREEN
     //System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
@@ -131,7 +119,17 @@ public class Lobby {
         return isNum;
     }
 
-    public void randomInput(int capacity) throws InterruptedException, FileNotFoundException {
+    //TODO
+    // Code duplicated in switches, needed to be simplified
+
+    private void customizedInput(int capacity, Scanner input) throws InterruptedException {
+        for (int i = 0; i < teams.length; i++) {
+            System.out.print(TerminalTools.CLEAR_SCREEN);
+            DrawingASCII.presentationMessage(i + 1); //make it as title
+            creatingCustomized(teams[i], capacity, input);
+        }
+    }
+    public void randomizedInput(int capacity) throws InterruptedException, FileNotFoundException {
         for (int i = 0; i < teams.length; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1); //make it as title
