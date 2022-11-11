@@ -5,11 +5,12 @@ import Tools.DrawingASCII;
 import Tools.TerminalTools;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
 
-    public void main() throws InterruptedException, FileNotFoundException {
+    public void main() throws InterruptedException, IOException {
         Scanner input = new Scanner(System.in);
 
         String menu_one_input = menu_one(input);   //input del user en menu_one
@@ -18,6 +19,7 @@ public class Menu {
         Lobby lobby = new Lobby();
         lobby.menu_two_choice(Integer.parseInt(menu_two_input), input, menu_one_input);
 
+        battlefieldTitle();
         Battlefield battlefield = new Battlefield(lobby);         //battle
         battlefield.battle(menu_one_input);
 
@@ -26,7 +28,7 @@ public class Menu {
 
     private String menu_one(Scanner input) throws InterruptedException {
         System.out.print(TerminalTools.CLEAR_SCREEN);
-        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle());
+        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle() + TerminalTools.ANSI_RESET);
         System.out.println(TerminalTools.ANSI_RESET + DrawingASCII.linesSeparationMessage());
 
         makeItSlow(menu_one_print(), 5);
@@ -43,6 +45,10 @@ public class Menu {
         return input.nextLine();
     }
 
+    private void battlefieldTitle() {
+        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.printBattlefieldTitle() + TerminalTools.ANSI_RESET);
+    }
+
     private void menu_one_choice(int n) {
         /* Que pasa si es de algun tipo de modo de juego? */
         switch (n) {
@@ -50,6 +56,7 @@ public class Menu {
             case 2 -> System.out.println("PLAYER VS PLAYER");
             case 3 -> System.out.println("IA VS IA");
         }
+
     }
 
     private String menu_one_print() {
@@ -73,7 +80,7 @@ public class Menu {
     public static void makeItSlow(String arcade, int time) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             if (arcade.charAt(i) != '\t') {
-                Thread.sleep(0); //better to have in 210 for the final project
+                Thread.sleep(time); //better to have in 210 for the final project
                 System.out.print(arcade.charAt(i));
             } else
                 System.out.print(arcade.charAt(i));

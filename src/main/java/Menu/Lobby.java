@@ -1,11 +1,20 @@
 package Menu;
 
+import Characters.Character;
 import Characters.CharacterType;
+import Characters.Warrior;
+import Characters.Wizard;
 import Tools.DrawingASCII;
 import Tools.TerminalTools;
 import Battle.Team;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Lobby {
@@ -23,15 +32,16 @@ public class Lobby {
     }
     Lobby() {}
 
-    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, FileNotFoundException {
+    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
         int capacity = teamCapacity(input);
         if(menu_one_input.equals("1")){
             switch (creationMode) {
                 case 1 -> customizedInput(capacity, input);   //Custom stats
-                case 2 -> randomizedInput(capacity);          //Random stats
-                case 3 -> creatingFomCSV();               //CSV stats
+                case 2 -> randomizedInput(capacity, input);          //Random stats
+                //case 3 -> creatingFomCSV();               //CSV stats
             }
         }
+        exportToCSV(teams);
     }
 
 
@@ -57,8 +67,8 @@ public class Lobby {
             charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy:", input);
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power:", input);
             team.addCharactersCustom(charStats);
-            Thread.sleep(3000);
-            System.out.print(TerminalTools.CLEAR_SCREEN);
+
+            enterToContinue(input);
         }
     }
 
@@ -118,6 +128,11 @@ public class Lobby {
         }
         return isNum;
     }
+    private void enterToContinue(Scanner input) {
+        System.out.println("\n\n\t\t\t\t\tEnter to continue...");
+        input.nextLine();
+        System.out.print(TerminalTools.CLEAR_SCREEN);
+    }
 
     //TODO
     // Code duplicated in switches, needed to be simplified
@@ -129,16 +144,57 @@ public class Lobby {
             creatingCustomized(teams[i], capacity, input);
         }
     }
-    public void randomizedInput(int capacity) throws InterruptedException, FileNotFoundException {
+    public void randomizedInput(int capacity, Scanner input) throws InterruptedException, IOException {
         for (int i = 0; i < teams.length; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
-            DrawingASCII.presentationMessage(i + 1); //make it as title
+            DrawingASCII.presentationMessage(i + 1);
             teams[i].addCharactersRandom(capacity);
-            //teams[i].showStats();
+            //TODO
+            // MAKE IT PRETTIER
+            System.out.println(teams[i].getTeamCharacters());
+            enterToContinue(input);
+        }
+        exportToCSV(teams);
+    }
+
+    private void exportToCSV(Team[] teams) throws IOException {
+        FileWriter writer = new FileWriter("./tesExporting.csv");
+        writer.write("Team, Type, Name, Health, Energy, Power\n");
+        for (int iterTeam = 0; iterTeam < teams.length; iterTeam++) {
+            for (int iterChar = 0; iterChar < teams[iterTeam].getTeamCharacters().size(); iterChar++) {
+                writingToCSV(teams, writer, iterTeam, iterChar);
+            }
+        }
+        writer.close();
+    }
+
+    private static void writingToCSV(Team[] teams, FileWriter writer, int team, int character) throws IOException {
+        Character ch = teams[team].getTeamCharacters().get(character);
+        writer.write(team + "," +
+                ch.getCharacterType() + "," +
+                ch.getName() + "," +
+                ch.getHp() + ",");
+        switch (ch.getCharacterType()) {
+            case 'a':
+                writer.write(((Warrior)ch).getStamina() + ","
+                        + ((Warrior)ch).getStrength() + "\n");
+                break;
+            case 'i':
+                writer.write(((Wizard)ch).getMana() + ","
+                        + ((Wizard)ch).getIntelligence() + "\n");
+                break;
         }
     }
 
-    public void creatingFomCSV() {
+    public void creatingFomCSV(Team[] team) {
+        /*
+        //var gson = new GsonBuilder().setPrettyPrinting().create();
+        for (Team team : teams) {
+            //String teamToJson = gson.toJson(team);
+            //writer.write(teamToJson);
+            writer.close();
+        }
+         */
         //TODO
     }
 }

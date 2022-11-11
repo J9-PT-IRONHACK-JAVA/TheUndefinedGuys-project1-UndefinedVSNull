@@ -42,19 +42,19 @@ public class Team {
             Wizard wiz = new Wizard(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             checkAvailabilityName(wiz);
             this.teamCharacters.add(wiz);
-            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
+            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
         }
     }
 
-    public void checkAvailabilityName(Character someOne ){
+        public void checkAvailabilityName(Character someOne ){
             for (Character character: teamCharacters) {
                 if(character.getName().equals(someOne.getName()))
                     character.setName(character.getName()+" Jr");
             }
     }
-        
 
-    public void addCharactersRandom(int capacity) throws FileNotFoundException {//Add Characters - Random Mode
+        //Add Characters - Random Mode
+        public void addCharactersRandom(int capacity) throws FileNotFoundException {
            
         Random value = new Random();
         int numberOfTypes=2;            //for easy scaling
