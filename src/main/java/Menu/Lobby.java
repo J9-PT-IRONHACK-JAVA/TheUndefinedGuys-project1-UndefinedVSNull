@@ -34,7 +34,7 @@ public class Lobby {
 
     public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
         int capacity = teamCapacity(input);
-        if(menu_one_input.equals("1")){
+        if(menu_one_input.equals("1") || menu_one_input.equals("2")){
             switch (creationMode) {
                 case 1 -> customizedInput(capacity, input);   //Custom stats
                 case 2 -> randomizedInput(capacity, input);          //Random stats
