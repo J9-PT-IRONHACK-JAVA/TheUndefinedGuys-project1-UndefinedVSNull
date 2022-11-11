@@ -46,39 +46,35 @@ public class Team {
         }
     }
 
-
-
-        public void checkAvailabilityName(Character someOne ){
+    public void checkAvailabilityName(Character someOne ){
             for (Character character: teamCharacters) {
                 if(character.getName().equals(someOne.getName()))
                     character.setName(character.getName()+" Jr");
-            }   
+            }
     }
         
 
-        //Add Characters - Random Mode
-        public void addCharactersRandom(int capacity) throws FileNotFoundException {
+    public void addCharactersRandom(int capacity) throws FileNotFoundException {//Add Characters - Random Mode
            
-            Random value = new Random();
-            int numberOfTypes=2;            //for easy scaling
-            int randomCharacter;            //type of characters.Character
+        Random value = new Random();
+        int numberOfTypes=2;            //for easy scaling
+        int randomCharacter;            //type of characters.Character
 
-            for (int i = 0; i < capacity; i++) {
+        for (int i = 0; i < capacity; i++) {
                 randomCharacter = value.nextInt(0, numberOfTypes);    //random from 0 to 1
-                switch (randomCharacter){
-                    case 0: {
+            switch (randomCharacter){
+                case 0: {
                         Warrior war = new Warrior();
                         checkAvailabilityName(war);
                         teamCharacters.add(war);
-                        }
-                    case 1: {
+                        } case 1: {
                         Wizard wiz = new Wizard();
                         checkAvailabilityName(wiz);
                         teamCharacters.add(wiz);
-                    }
-                }
+                        }
             }
         }
+    }
  
 //        int[] team = new int[capacity];
 //        //team = determineCharType(capacity);
