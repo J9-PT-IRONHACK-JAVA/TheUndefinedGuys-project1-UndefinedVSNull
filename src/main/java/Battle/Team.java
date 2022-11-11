@@ -54,7 +54,7 @@ public class Team {
     }
 
         //Add Characters - Random Mode
-        public void addCharactersRandom(int capacity) throws FileNotFoundException {
+    public void addCharactersRandom(int capacity) throws FileNotFoundException {
            
         Random value = new Random();
         int numberOfTypes=2;            //for easy scaling
