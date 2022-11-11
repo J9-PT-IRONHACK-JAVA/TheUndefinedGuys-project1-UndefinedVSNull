@@ -36,6 +36,16 @@ public class DrawingASCII {
             case 2 -> Menu.makeItSlow(teamTwo, 1);
         }
     }
+    public static String printBattlefieldTitle() {
+        return """
+                    ____  ___  ______________    ________________________    ____\s
+                   / __ )/   |/_  __/_  __/ /   / ____/ ____/  _/ ____/ /   / __ \\
+                  / __  / /| | / /   / / / /   / __/ / /_   / // __/ / /   / / / /
+                 / /_/ / ___ |/ /   / / / /___/ /___/ __/ _/ // /___/ /___/ /_/ /\s
+                /_____/_/  |_/_/   /_/ /_____/_____/_/   /___/_____/_____/_____/ \s
+                                                                                 \s
+                """;
+    }
     public static void drawSoldier () {
         System.out.println("""
             \t\t\t\t _       _____    ____  ____  ________  ____\s

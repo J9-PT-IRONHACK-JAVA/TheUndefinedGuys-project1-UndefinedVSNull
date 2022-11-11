@@ -42,7 +42,7 @@ public class Team {
             Wizard wiz = new Wizard(charStats[1], Integer.parseInt(charStats[2]), Integer.parseInt(charStats[3]), Integer.parseInt(charStats[4]));
             checkAvailabilityName(wiz);
             this.teamCharacters.add(wiz);
-            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
+            System.out.println(TerminalTools.ANSI_GREEN + "\t\t\t\t\tWIZARD ADDED!" + TerminalTools.ANSI_RESET);
         }
     }
 

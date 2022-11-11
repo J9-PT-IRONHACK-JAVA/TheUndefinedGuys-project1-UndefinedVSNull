@@ -30,7 +30,7 @@ public class Lobby {
                 customizedInput(capacity, input);
                 break;
             case 2:
-                randomInput(capacity);
+                randomInput(capacity, input);
                 break;
             case 3:
                 creatingFomCSV();
@@ -47,8 +47,7 @@ public class Lobby {
             creatingCustomized(teams[i], capacity, input);
         }
     }
-    //TODO
-    // mirar HOW WOULD YOU LIKE TO CREATE 2 SCREEN
+
     //System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
     public int teamCapacity(Scanner input) {
         String size;
@@ -69,8 +68,7 @@ public class Lobby {
             charStats[3] = AssignValueAndShowDialogueWithIntegers("Enter the energy:", input);
             charStats[4] = AssignValueAndShowDialogueWithIntegers("Enter the power:", input);
             team.addCharactersCustom(charStats);
-            Thread.sleep(3000);
-            System.out.print(TerminalTools.CLEAR_SCREEN);
+            enterToContinue(input);
         }
     }
 
@@ -130,13 +128,20 @@ public class Lobby {
         }
         return isNum;
     }
+    private void enterToContinue(Scanner input) {
+        System.out.println("\n\n\t\t\t\t\tEnter to continue...");
+        input.nextLine();
+        System.out.print(TerminalTools.CLEAR_SCREEN);
+    }
 
-    public void randomInput(int capacity) throws InterruptedException, FileNotFoundException {
+    public void randomInput(int capacity, Scanner input) throws InterruptedException, FileNotFoundException {
         for (int i = 0; i < teams.length; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1); //make it as title
             teams[i].addCharactersRandom(capacity);
             //teams[i].showStats();
+            System.out.println("------------ SHOW STAAAAAAATS ------------------");
+            enterToContinue(input);
         }
     }
 
