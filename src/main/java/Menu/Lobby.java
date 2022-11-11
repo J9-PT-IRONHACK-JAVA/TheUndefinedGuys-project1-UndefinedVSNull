@@ -35,6 +35,7 @@ public class Lobby {
     Lobby() {}
 
     public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
+
         int capacity = 0;
         if (menu_one_input.equals("3"))
             creationMode += 1;
@@ -44,6 +45,7 @@ public class Lobby {
             case 1 -> customizedInput(menu_one_input, capacity, input);
             case 2 -> randomizedInput(capacity, input);
             case 3 -> creatingFomCSV();
+
         }
         exportToCSV(teams);
     }

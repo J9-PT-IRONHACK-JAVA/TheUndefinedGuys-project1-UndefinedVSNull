@@ -28,9 +28,9 @@ public class Team {
         return teamCharacters;
     }
 
-    //Add Characters - Custom Mode
+        //Add Characters - Custom Mode
 
-    public void addCharactersCustom(String[] charStats) {
+         public void addCharactersCustom(String[] charStats) {
         //checkAvailability(charStats[1]);
 
         if (charStats[0].equals("1")) {
@@ -54,7 +54,7 @@ public class Team {
     }
 
         //Add Characters - Random Mode
-        public void addCharactersRandom(int capacity) throws FileNotFoundException {
+    public void addCharactersRandom(int capacity) throws FileNotFoundException {
            
         Random value = new Random();
         int numberOfTypes=2;            //for easy scaling
@@ -73,6 +73,7 @@ public class Team {
                     checkAvailabilityName(wiz);
                     teamCharacters.add(wiz);
                     break;
+
             }
         }
     }

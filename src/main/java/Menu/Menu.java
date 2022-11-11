@@ -91,7 +91,7 @@ public class Menu {
     public static void makeItSlow(String arcade, int time) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             if (arcade.charAt(i) != '\t') {
-                Thread.sleep(time); //better to have in 210 for the final project
+                Thread.sleep(0); //better to have in 210 for the final project
                 System.out.print(arcade.charAt(i));
             } else
                 System.out.print(arcade.charAt(i));
