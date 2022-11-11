@@ -15,7 +15,7 @@ public class Menu {
 
         String menu_one_input = menu_one(input);   //input del user en menu_one
         //System.out.print(Tools.TerminalTools.CURSOR_MIDDLE);
-        String menu_two_input = menu_two(input);    //input del user en menu_two
+        String menu_two_input = menu_two(menu_one_input, input);    //input del user en menu_two
         Lobby lobby = new Lobby();
         lobby.menu_two_choice(Integer.parseInt(menu_two_input), input, menu_one_input);
 
@@ -39,9 +39,12 @@ public class Menu {
        return menu_one_input;
     }
 
-    private String menu_two(Scanner input) throws InterruptedException {
+    private String menu_two(String menu_one_input, Scanner input) throws InterruptedException {
         System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle() + TerminalTools.ANSI_RESET);
-        makeItSlow(menu_two_print(), 5);
+        if (menu_one_input.equals("3"))
+            makeItSlow(menu_two_print_noplayers(), 5);
+        else
+            makeItSlow(menu_two_print_players(), 5);
         return input.nextLine();
     }
 
@@ -68,12 +71,20 @@ public class Menu {
 
                 """;
     }
-    private String menu_two_print() {
+    private String menu_two_print_players() {
         return """
                 \t\t\t\t\t\tHOW WOULD YOU LIKE TO CREATE YOUR TEAM?
                 \t\t\t\t\t\t\t[1] - Full customized
                 \t\t\t\t\t\t\t[2] - Full random
                 \t\t\t\t\t\t\t[3] - Import from CSV
+
+                """;
+    }
+    private String menu_two_print_noplayers() {
+        return """
+                \t\t\t\t\t\tHOW WOULD YOU LIKE TO CREATE YOUR TEAM?
+                \t\t\t\t\t\t\t[1] - Full random
+                \t\t\t\t\t\t\t[2] - Import from CSV
 
                 """;
     }

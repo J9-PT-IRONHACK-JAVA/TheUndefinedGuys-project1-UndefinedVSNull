@@ -36,21 +36,22 @@ public class Lobby {
 
     public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
         int capacity = 0;
+        if (menu_one_input.equals("3"))
+            creationMode += 1;
         if (creationMode != 3)
             capacity = teamCapacity(input);
         switch (creationMode) {
-            case 1 -> customizedInput(capacity, input);   //Custom stats
-            case 2 -> randomizedInput(capacity, input);          //Random stats
-            case 3 -> creatingFomCSV();               //CSV stats
+            case 1 -> customizedInput(menu_one_input, capacity, input);
+            case 2 -> randomizedInput(capacity, input);
+            case 3 -> creatingFomCSV();
         }
-        if (creationMode != 3)
-            exportToCSV(teams);
+        exportToCSV(teams);
     }
 
 
     //TODO
     // mirar HOW WOULD YOU LIKE TO CREATE 2 SCREEN
-    //System.out.println("\t\t\t\t\tHow many characters would you like on your team?");
+
     public int teamCapacity(Scanner input) {
         String size;
         System.out.println("\t\t\t\t\t    How many characters would you like for both teams?");
@@ -136,15 +137,16 @@ public class Lobby {
         System.out.print(TerminalTools.CLEAR_SCREEN);
     }
 
-    //TODO
-    // Code duplicated in switches, needed to be simplified
+    private void customizedInput(String menu_one_input, int capacity, Scanner input) throws InterruptedException, FileNotFoundException {
+        int players = Integer.parseInt(menu_one_input);
 
-    private void customizedInput(int capacity, Scanner input) throws InterruptedException {
-        for (int i = 0; i < teams.length; i++) {
+        for (int i = 0; i < players; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1); //make it as title
             creatingCustomized(teams[i], capacity, input);
         }
+        if (players == 1)
+            teamTwo.addCharactersRandom(capacity);
     }
     public void randomizedInput(int capacity, Scanner input) throws InterruptedException, IOException {
         for (int i = 0; i < teams.length; i++) {
@@ -214,6 +216,7 @@ public class Lobby {
             }
             System.out.print(TerminalTools.CLEAR_SCREEN);
         }
+        details.close();
     }
     private String determineChar(String s) {
         String characterType = "";
