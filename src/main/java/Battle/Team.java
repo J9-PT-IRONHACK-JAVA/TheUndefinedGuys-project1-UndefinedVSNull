@@ -28,9 +28,9 @@ public class Team {
         return teamCharacters;
     }
 
-    //Add Characters - Custom Mode
+        //Add Characters - Custom Mode
 
-    public void addCharactersCustom(String[] charStats) {
+         public void addCharactersCustom(String[] charStats) {
         //checkAvailability(charStats[1]);
 
         if (charStats[0].equals("1")) {
