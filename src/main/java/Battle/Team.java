@@ -62,16 +62,17 @@ public class Team {
 
         for (int i = 0; i < capacity; i++) {
                 randomCharacter = value.nextInt(0, numberOfTypes);    //random from 0 to 1
-            switch (randomCharacter){
-                case 0: {
-                        Warrior war = new Warrior();
-                        checkAvailabilityName(war);
-                        teamCharacters.add(war);
-                        } case 1: {
-                        Wizard wiz = new Wizard();
-                        checkAvailabilityName(wiz);
-                        teamCharacters.add(wiz);
-                        }
+            switch (randomCharacter) {
+                case 0:
+                    Warrior war = new Warrior();
+                    checkAvailabilityName(war);
+                    teamCharacters.add(war);
+                    break;
+                case 1:
+                    Wizard wiz = new Wizard();
+                    checkAvailabilityName(wiz);
+                    teamCharacters.add(wiz);
+                    break;
             }
         }
     }
