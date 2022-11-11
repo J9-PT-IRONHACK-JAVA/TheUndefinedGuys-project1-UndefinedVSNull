@@ -32,13 +32,13 @@ public class Lobby {
     }
     Lobby() {}
 
-    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, FileNotFoundException {
+    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
         int capacity = teamCapacity(input);
         if(menu_one_input.equals("1")){
             switch (creationMode) {
                 case 1 -> customizedInput(capacity, input);   //Custom stats
-                case 2 -> randomizedInput(capacity);          //Random stats
-                case 3 -> creatingFomCSV();               //CSV stats
+                case 2 -> randomizedInput(capacity, input);          //Random stats
+                //case 3 -> creatingFomCSV();               //CSV stats
             }
         }
         exportToCSV(teams);
@@ -144,7 +144,7 @@ public class Lobby {
             creatingCustomized(teams[i], capacity, input);
         }
     }
-    public void randomizedInput(int capacity) throws InterruptedException, FileNotFoundException {
+    public void randomizedInput(int capacity, Scanner input) throws InterruptedException, IOException {
         for (int i = 0; i < teams.length; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
             DrawingASCII.presentationMessage(i + 1);
