@@ -5,6 +5,7 @@ import Menu.Lobby;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -52,7 +53,7 @@ public class Battlefield {
                 twoPlayerBattle(userChoice,defender,attacker,graveyard);
 
             }else if(menu_one_input.equals("3")){
-                noPlayerBattle();
+                noPlayerBattle(defender,attacker,graveyard);
             }
         }
 
@@ -198,7 +199,6 @@ public class Battlefield {
             }        //team 1 choice 1v1
 
 
-
             if(!lobby.getTeamTwo().getTeamCharacters().get(i).isAlive()){                   //team 2 choice
                 System.out.println("Player number "+(i+1)+" can't play, he's dead! \n");
                 continue; //?
@@ -259,7 +259,61 @@ public class Battlefield {
         } //2 player mode
     }
 
-    private void noPlayerBattle() {
+    private void noPlayerBattle(Character defender,Character attacker,ArrayList<Character> graveyard) {
+
+        for(int i= 0 ; i< lobby.getTeamOne().getTeamCharacters().size(); i++){       // No player mode
+
+            int attackerChoice = 0;
+            Character attackerChoiceCharacter = null;
+            int defenderChoice = 0;
+            Character defenderChoiceCharacter = null;
+
+            do{
+                attackerChoice = random(0,lobby.getTeamTwo().getTeamCharacters().size());
+                attackerChoiceCharacter = lobby.getTeamOne().getTeamCharacters().get(attackerChoice);
+
+                defenderChoice = random(0,lobby.getTeamTwo().getTeamCharacters().size());
+                defenderChoiceCharacter = lobby.getTeamTwo().getTeamCharacters().get(defenderChoice);
+            }
+            while(!lobby.getTeamOne().getTeamCharacters().get(attackerChoice).isAlive() || !lobby.getTeamTwo().getTeamCharacters().get(defenderChoice).isAlive());
+
+            while(attackerChoiceCharacter.isAlive() && defenderChoiceCharacter.isAlive()){                  //Duel 1v1
+
+                 System.out.println("It's Team one's turn! Player "+lobby.getTeamOne().getTeamCharacters().get(attackerChoice).getName()+" attacking first!");
+
+                System.out.println("**********************************");
+                System.out.println("It's "+lobby.getTeamOne().getTeamCharacters().get(attackerChoice).getName()+"'s turn!");
+                System.out.println("********************************** \n");
+                lobby.getTeamOne().getTeamCharacters().get(attackerChoice).attack(defenderChoiceCharacter);
+
+                if(!lobby.getTeamTwo().getTeamCharacters().get(defenderChoice).isAlive()){
+                    System.out.println("//////////////////////////////////");
+                    System.out.println("Player "+lobby.getTeamOne().getTeamCharacters().get(attackerChoice).getName()+ " wins the duel!");
+                    System.out.println("////////////////////////////////// \n");
+                    graveyard.add(getLobby().getTeamTwo().getTeamCharacters().get(defenderChoice));
+                    System.out.println("+ + + + Graveyard + + + +\n");
+                    System.out.println(graveyard.toString());
+                    System.out.println("+ + + + + + + + + + + + +\n");
+                    break;
+                }
+
+                System.out.println("**********************************");
+                System.out.println(lobby.getTeamTwo().getTeamCharacters().get(defenderChoice).getName() + " is now CounterAttacking! Watch out!");
+                System.out.println("********************************** \n");
+                lobby.getTeamTwo().getTeamCharacters().get(defenderChoice).attack(attackerChoiceCharacter);
+
+                if(!lobby.getTeamOne().getTeamCharacters().get(attackerChoice).isAlive()) {
+                    System.out.println("//////////////////////////////////");
+                    System.out.println("Player " + lobby.getTeamTwo().getTeamCharacters().get(defenderChoice).getName() + " wins the duel!");
+                    System.out.println("////////////////////////////////// \n");
+                    graveyard.add(getLobby().getTeamOne().getTeamCharacters().get(attackerChoice));
+                    System.out.println("+ + + + Graveyard + + + +\n");
+                    System.out.println(graveyard.toString());
+                    System.out.println("+ + + + + + + + + + + + +\n");
+                    break;
+                }
+            }
+        } //No player mode
     }
 
 
@@ -270,6 +324,12 @@ public class Battlefield {
 
     public boolean checkTeamTwoAlive(){
         return !lobby.getTeamTwo().checkAllDead();
+    }
+
+
+    public int random(int valueMin, int valueMax){
+        Random value= new Random();
+        return value.nextInt(valueMin, valueMax-1);
     }
 }
 
