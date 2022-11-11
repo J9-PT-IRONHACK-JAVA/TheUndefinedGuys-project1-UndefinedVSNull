@@ -40,14 +40,13 @@ public class Battlefield {
         //System.out.println("entro en la battle!!");
         Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),0);
 
-        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.team1Title());                              // Team 1 title
+        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.team1Title() + TerminalTools.ANSI_RESET);
         System.out.println(lobby.getTeamOne().getTeamCharacters());
 
-        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.team2Title());                              // Team 2 title
+        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.team2Title() + TerminalTools.ANSI_RESET);
         System.out.println(lobby.getTeamTwo().getTeamCharacters());
-        System.out.println(TerminalTools.ANSI_RESET);
 
-        Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),5);
+        System.out.println("\n" + DrawingASCII.linesSeparationMessage() + "\n");
 
 
         while(checkTeamOneAlive() && checkTeamTwoAlive()){  //Duel team1 vs team2
