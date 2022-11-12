@@ -40,7 +40,7 @@ descripcion
 
 - It has a nont boring ASCII text-based menu
 
-- You can download your team from file
+- You can download your team from a file
 
 - You will see all the deads in the graveyard
 
@@ -48,5 +48,6 @@ descripcion
 
 
 
-
+## WE HOPE YOU ENJOY IT AS WE DO !!!   
+#### Thanks for playing
 
