@@ -14,6 +14,7 @@ The game takes place in the Middle Ages, a time when wars were rife, food was sc
 ### Configuration of your team
 
 __Total configuration within the parameters of the game__
+
 We will define:
 Character Type: Warrior or Sorcerer
 Your name, your health, stamina, strength, power
