@@ -7,15 +7,18 @@
   - Víctor
 
 
+
 ### The History
 
 The game takes place in the Middle Ages, a time when wars were rife, food was scarce, and magic was at its best. The battles were constant and most, like this one, were to the death.
+
 
 
 ### There are 3 game modes:
 - 1 Player
 - 2 Players
 - Machine against machine
+
 
 
 
@@ -49,5 +52,5 @@ descripcion
 
 
 ## WE HOPE YOU ENJOY IT AS WE DO !!!   
-#### Thanks for playing
+#### Thanks for playing !!!
 
