@@ -19,12 +19,20 @@ __Total configuration within the parameters of the game__
 We will define:
 
 Character Type: Warrior or Wizard
+
 Your name, your health, stamina, strength, power
+
 Random character creation
+
 It allows for fast gameplay as it automatically sets character values. It applies to our equipment and also to the machine
 descripcion
 
-requisitos
+
+### All the Requirements Complished
+
+It has a nont boring ASCII text-based menu
+
+
 
 como hacerlo funcionar, instr especiales
 
