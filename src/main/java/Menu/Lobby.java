@@ -8,15 +8,10 @@ import Tools.DrawingASCII;
 import Tools.TerminalTools;
 import Battle.Team;
 
-import com.github.javafaker.shaded.snakeyaml.tokens.DocumentEndToken;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Lobby {
@@ -34,15 +29,15 @@ public class Lobby {
     }
     Lobby() {}
 
-    public void menu_two_choice(int creationMode, Scanner input, String menu_one_input) throws InterruptedException, IOException {
+    public void menu_two_choice(int creationMode, Scanner input, String menuOneInput) throws InterruptedException, IOException {
 
         int capacity = 0;
-        if (menu_one_input.equals("3"))
+        if (menuOneInput.equals("3"))
             creationMode += 1;
         if (creationMode != 3)
             capacity = teamCapacity(input);
         switch (creationMode) {
-            case 1 -> customizedInput(menu_one_input, capacity, input);
+            case 1 -> customizedInput(menuOneInput, capacity, input);
             case 2 -> randomizedInput(capacity, input);
             case 3 -> creatingFomCSV();
 
@@ -133,14 +128,14 @@ public class Lobby {
         }
         return isNum;
     }
-    private void enterToContinue(Scanner input) {
+    public static void enterToContinue(Scanner input) {
         System.out.println("\n\n\t\t\t\t\tEnter to continue...");
         input.nextLine();
         System.out.print(TerminalTools.CLEAR_SCREEN);
     }
 
-    private void customizedInput(String menu_one_input, int capacity, Scanner input) throws InterruptedException, FileNotFoundException {
-        int players = Integer.parseInt(menu_one_input);
+    private void customizedInput(String menuOneInput, int capacity, Scanner input) throws InterruptedException, FileNotFoundException {
+        int players = Integer.parseInt(menuOneInput);
 
         for (int i = 0; i < players; i++) {
             System.out.print(TerminalTools.CLEAR_SCREEN);
@@ -162,7 +157,7 @@ public class Lobby {
         exportToCSV(teams);
     }
 
-    private void showStats(Team team) {
+    public static void showStats(Team team) {
         int sizeTeam = team.getTeamCharacters().size();
         for (int i = 0; i < sizeTeam; i++) {
             System.out.printf("\n%s\n", team.getTeamCharacters().get(i));

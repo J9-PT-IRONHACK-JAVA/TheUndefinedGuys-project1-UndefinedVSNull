@@ -4,7 +4,6 @@ import Battle.Battlefield;
 import Tools.DrawingASCII;
 import Tools.TerminalTools;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -13,46 +12,46 @@ public class Menu {
     public void main() throws InterruptedException, IOException {
         Scanner input = new Scanner(System.in);
 
-        String menu_one_input = menu_one(input);   //input del user en menu_one
-        //System.out.print(Tools.TerminalTools.CURSOR_MIDDLE);
-        String menu_two_input = menu_two(menu_one_input, input);    //input del user en menu_two
+        String menuOneInput = menuOne(input);   //input del user en menu_one
+
+        String menuTwoInput = menuTwo(menuOneInput, input);    //input del user en menu_two
         Lobby lobby = new Lobby();
-        lobby.menu_two_choice(Integer.parseInt(menu_two_input), input, menu_one_input);
+        lobby.menu_two_choice(Integer.parseInt(menuTwoInput), input, menuOneInput);
 
         battlefieldTitle();
         Battlefield battlefield = new Battlefield(lobby);         //battle
-        battlefield.battle(menu_one_input);
+        battlefield.battle(menuOneInput, input);
 
         input.close();
     }
 
-    private String menu_one(Scanner input) throws InterruptedException {
+    private String menuOne(Scanner input) throws InterruptedException {
         System.out.print(TerminalTools.CLEAR_SCREEN);
         System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle() + TerminalTools.ANSI_RESET);
         System.out.println(TerminalTools.ANSI_RESET + DrawingASCII.linesSeparationMessage());
 
-        makeItSlow(menu_one_print(), 5);
-        String menu_one_input = input.nextLine();
-        menu_one_choice(Integer.parseInt(menu_one_input));
+        makeItSlow(menuOnePrint(), 20);
+        String menuOneInput = input.nextLine();
+        menuOneChoice(Integer.parseInt(menuOneInput));
         System.out.print(TerminalTools.CLEAR_SCREEN);
 
-       return menu_one_input;
+       return menuOneInput;
     }
 
-    private String menu_two(String menu_one_input, Scanner input) throws InterruptedException {
+    private String menuTwo(String menuOneInput, Scanner input) throws InterruptedException {
         System.out.println(TerminalTools.ANSI_RED + DrawingASCII.printTitle() + TerminalTools.ANSI_RESET);
-        if (menu_one_input.equals("3"))
-            makeItSlow(menu_two_print_noplayers(), 5);
+        if (menuOneInput.equals("3"))
+            makeItSlow(menuTwoPrintNoPlayers(), 20);
         else
-            makeItSlow(menu_two_print_players(), 5);
+            makeItSlow(menuTwoPrintPlayers(), 20);
         return input.nextLine();
     }
 
-    private void battlefieldTitle() {
-        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.printBattlefieldTitle() + TerminalTools.ANSI_RESET);
+    private void battlefieldTitle() throws InterruptedException {
+        makeItSlow(TerminalTools.ANSI_BLUE + DrawingASCII.printBattlefieldTitle() + TerminalTools.ANSI_RESET, 5);
     }
 
-    private void menu_one_choice(int n) {
+    private void menuOneChoice(int n) {
         /* Que pasa si es de algun tipo de modo de juego? */
         switch (n) {
             case 1 -> System.out.println("PLAYER VS IA");
@@ -62,7 +61,7 @@ public class Menu {
 
     }
 
-    private String menu_one_print() {
+    private String menuOnePrint() {
         return """
                 \t\t\t\t\t\tHOW WOULD YOU LIKE TO PLAY?
                 \t\t\t\t\t\t\t[1] - 1 PLAYER
@@ -71,7 +70,7 @@ public class Menu {
 
                 """;
     }
-    private String menu_two_print_players() {
+    private String menuTwoPrintPlayers() {
         return """
                 \t\t\t\t\t\tHOW WOULD YOU LIKE TO CREATE YOUR TEAM?
                 \t\t\t\t\t\t\t[1] - Full customized
@@ -80,7 +79,7 @@ public class Menu {
 
                 """;
     }
-    private String menu_two_print_noplayers() {
+    private String menuTwoPrintNoPlayers() {
         return """
                 \t\t\t\t\t\tHOW WOULD YOU LIKE TO CREATE YOUR TEAM?
                 \t\t\t\t\t\t\t[1] - Full random
@@ -91,7 +90,7 @@ public class Menu {
     public static void makeItSlow(String arcade, int time) throws InterruptedException {
         for (int i = 0; i < arcade.length(); i++) {
             if (arcade.charAt(i) != '\t') {
-                Thread.sleep(0); //better to have in 210 for the final project
+                Thread.sleep(time); //better to have in 210 for the final project
                 System.out.print(arcade.charAt(i));
             } else
                 System.out.print(arcade.charAt(i));
