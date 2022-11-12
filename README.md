@@ -18,6 +18,7 @@ The game takes place in the Middle Ages, a time when wars were rife, food was sc
 - Machine against machine
 
 
+
 ### Configuration of your team
 
 __Total configuration within the parameters of the game__
@@ -32,6 +33,7 @@ Random character creation
 
 It allows for fast gameplay as it automatically sets character values. It applies to our equipment and also to the machine
 descripcion
+
 
 
 ### All the Requirements Complished
