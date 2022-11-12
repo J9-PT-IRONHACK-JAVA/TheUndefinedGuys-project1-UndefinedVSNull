@@ -1,7 +1,7 @@
 # TheUndefinedGuys-project1-UndefinedVSNull
 
 
-  ### The Devellopers
+  ### The Developers
   - Alfred
   - Eugeni
   - Víctor
@@ -36,14 +36,15 @@ descripcion
 
 ### All the Requirements Complished
 
-It has a nont boring ASCII text-based menu
+- It has a nont boring ASCII text-based menu
+
+- You can download your team from file
+
+- You will see all the deads in the graveyard
+
+- The games finish when a team wins
 
 
 
-como hacerlo funcionar, instr especiales
-
-como ejecutar proyecto 
-
-que funcionalidades y opciones
 
 
