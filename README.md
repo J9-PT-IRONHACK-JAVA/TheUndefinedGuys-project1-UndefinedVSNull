@@ -1,4 +1,4 @@
-# TheUndefinedGuys-project1-UndefinedVSNull
+## TheUndefinedGuys-project1-UndefinedVSNull
 
 
   
@@ -11,7 +11,7 @@ There are 3 game modes:
 - 2 Players
 - Machine against machine
 
-Configuration of your team
+#Configuration of your team
 
 Total configuration within the parameters of the game
 We will define:
