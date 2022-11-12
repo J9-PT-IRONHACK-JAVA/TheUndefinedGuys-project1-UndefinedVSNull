@@ -1,7 +1,13 @@
 # TheUndefinedGuys-project1-UndefinedVSNull
 
 
-  
+  ### The Devellopers
+  - Alfred
+  - Eugeni
+  - Víctor
+
+
+### The History
 
 The game takes place in the Middle Ages, a time when wars were rife, food was scarce, and magic was at its best. The battles were constant and most, like this one, were to the death.
 
