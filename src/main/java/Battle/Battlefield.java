@@ -37,7 +37,6 @@ public class Battlefield {
         Character attacker = null;
         ArrayList<Character> graveyard = new ArrayList<>();
 
-        //System.out.println("entro en la battle!!");
         Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),0);
 
         System.out.println(TerminalTools.ANSI_RED + DrawingASCII.team1Title() + TerminalTools.ANSI_RESET);
@@ -48,15 +47,11 @@ public class Battlefield {
 
         System.out.println("\n" + DrawingASCII.linesSeparationMessage() + "\n");
 
-
         while(checkTeamOneAlive() && checkTeamTwoAlive()){  //Duel team1 vs team2
-            //System.out.println("entro en el while!");
-
             if(menu_one_input.equals("1")){
                 onePlayerBattle(userChoice,defender,attacker,graveyard);
 
             } else if (menu_one_input.equals("2")) {
-                //System.out.println("entro en el if!");
                 twoPlayerBattle(userChoice,defender,attacker,graveyard);
 
             }else if(menu_one_input.equals("3")){
