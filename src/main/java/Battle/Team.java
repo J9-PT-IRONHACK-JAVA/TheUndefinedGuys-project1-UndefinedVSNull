@@ -77,21 +77,6 @@ public class Team {
             }
         }
     }
- 
-//        int[] team = new int[capacity];
-//        //team = determineCharType(capacity);
-//        for (int i = 0; i < team.length; i++) {
-//            if(team[i] == 1){
-//                characters.Warrior war = new characters.Warrior();
-//                teamCharacters.add(war);
-//            }
-//            else if(team[i] == 2){
-//                characters.Wizard wiz = new characters.Wizard();
-//                this.teamCharacters.add(wiz);
-//            }
-//        }
-//    }
-    
 
     public boolean checkAllDead(){
         for(Character c: getTeamCharacters()){

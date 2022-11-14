@@ -11,9 +11,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import static Menu.Menu.makeItSlow;
+
 
 public class Battlefield {
-
 
     private Lobby lobby;
 
@@ -30,22 +31,26 @@ public class Battlefield {
         this.lobby = lobby;
     }
 
-    public void battle(String menu_one_input) throws InterruptedException {
+    public void battle(String menu_one_input, Scanner input) throws InterruptedException {
 
         int userChoice = 0;
         Character defender = null;
         Character attacker = null;
         ArrayList<Character> graveyard = new ArrayList<>();
 
-        Menu.makeItSlow(DrawingASCII.linesSeparationMessage(),0);
+        System.out.println("\n" + DrawingASCII.linesSeparationMessage());
 
-        System.out.println(TerminalTools.ANSI_RED + DrawingASCII.team1Title() + TerminalTools.ANSI_RESET);
-        System.out.println(lobby.getTeamOne().getTeamCharacters());
+        makeItSlow(TerminalTools.ANSI_GREEN + DrawingASCII.team1Title() + TerminalTools.ANSI_RESET, 7);
+        Lobby.showStats(lobby.getTeamOne());
 
-        System.out.println(TerminalTools.ANSI_BLUE + DrawingASCII.team2Title() + TerminalTools.ANSI_RESET);
-        System.out.println(lobby.getTeamTwo().getTeamCharacters());
+        System.out.println();
+        makeItSlow(TerminalTools.ANSI_YELLOW + DrawingASCII.team2Title() + TerminalTools.ANSI_RESET, 7);
+        Lobby.showStats(lobby.getTeamTwo());
 
-        System.out.println("\n" + DrawingASCII.linesSeparationMessage() + "\n");
+        Lobby.enterToContinue(input);
+
+        System.out.println(TerminalTools.CLEAR_SCREEN);
+        makeItSlow(TerminalTools.ANSI_BRIGHT_RED + DrawingASCII.printFight() + TerminalTools.ANSI_RESET, 3);
 
         while(checkTeamOneAlive() && checkTeamTwoAlive()){  //Duel team1 vs team2
             if(menu_one_input.equals("1")){
@@ -119,7 +124,7 @@ public class Battlefield {
 
                 attacker = lobby.getTeamOne().getTeamCharacters().get(i);
                 System.out.println("**********************************");
-                System.out.println(lobby.getTeamTwo().getTeamCharacters().get(userChoice-1).getName() + " is now CounterAttacking! Watch out!");
+                System.out.println(lobby.getTeamTwo().getTeamCharacters().get(userChoice-1).getName() + " is now CounterAttacking! Watch out! ");
                 System.out.println("********************************** \n");
                 lobby.getTeamTwo().getTeamCharacters().get(userChoice-1).attack(attacker);
 
@@ -139,9 +144,9 @@ public class Battlefield {
 
     private void twoPlayerBattle(int userChoice,Character defender,Character attacker,ArrayList<Character> graveyard) {
 
-        System.out.println("entro en el metodo!");
+        //System.out.println("entro en el metodo!");
         for(int i= 0 ; i< lobby.getTeamOne().getTeamCharacters().size(); i++){
-            System.out.println("entro en el for!");
+            //System.out.println("entro en el for!");
             if(!lobby.getTeamOne().getTeamCharacters().get(i).isAlive()){                                       //team1 choice
                 System.out.println("Player number "+(i+1)+" can't play, he's dead! \n");
                 continue; //?
@@ -320,6 +325,7 @@ public class Battlefield {
                     break;
                 }
             }
+
         } //No player mode
     }
 
