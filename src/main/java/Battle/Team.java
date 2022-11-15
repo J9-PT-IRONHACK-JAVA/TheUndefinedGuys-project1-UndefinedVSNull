@@ -28,9 +28,9 @@ public class Team {
         return teamCharacters;
     }
 
-    //Add Characters - Custom Mode
+        //Add Characters - Custom Mode
 
-    public void addCharactersCustom(String[] charStats) {
+         public void addCharactersCustom(String[] charStats) {
         //checkAvailability(charStats[1]);
 
         if (charStats[0].equals("1")) {
@@ -54,7 +54,7 @@ public class Team {
     }
 
         //Add Characters - Random Mode
-        public void addCharactersRandom(int capacity) throws FileNotFoundException {
+    public void addCharactersRandom(int capacity) throws FileNotFoundException {
            
         Random value = new Random();
         int numberOfTypes=2;            //for easy scaling
@@ -62,34 +62,21 @@ public class Team {
 
         for (int i = 0; i < capacity; i++) {
                 randomCharacter = value.nextInt(0, numberOfTypes);    //random from 0 to 1
-            switch (randomCharacter){
-                case 0: {
-                        Warrior war = new Warrior();
-                        checkAvailabilityName(war);
-                        teamCharacters.add(war);
-                        } case 1: {
-                        Wizard wiz = new Wizard();
-                        checkAvailabilityName(wiz);
-                        teamCharacters.add(wiz);
-                        }
+            switch (randomCharacter) {
+                case 0:
+                    Warrior war = new Warrior();
+                    checkAvailabilityName(war);
+                    teamCharacters.add(war);
+                    break;
+                case 1:
+                    Wizard wiz = new Wizard();
+                    checkAvailabilityName(wiz);
+                    teamCharacters.add(wiz);
+                    break;
+
             }
         }
     }
- 
-//        int[] team = new int[capacity];
-//        //team = determineCharType(capacity);
-//        for (int i = 0; i < team.length; i++) {
-//            if(team[i] == 1){
-//                characters.Warrior war = new characters.Warrior();
-//                teamCharacters.add(war);
-//            }
-//            else if(team[i] == 2){
-//                characters.Wizard wiz = new characters.Wizard();
-//                this.teamCharacters.add(wiz);
-//            }
-//        }
-//    }
-    
 
     public boolean checkAllDead(){
         for(Character c: getTeamCharacters()){
