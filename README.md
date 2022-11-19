@@ -6,7 +6,9 @@
   - Eugeni
   - Víctor
 
+### How to run the program
 
+To execute and run the program you must introduce the following command: `mvn compile && mvn exec:java -Dexec.mainClass=Main`
 
 ### The History
 
